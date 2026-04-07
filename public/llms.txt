@@ -1,0 +1,20 @@
+# Victor Melo
+
+GoHighLevel implementation specialist and business automation consultant based in Miami, FL.
+Founder & CEO of Vida Digital Solutions LLC.
+
+## Expertise
+- GoHighLevel (GHL) implementation & configuration
+- CRM automation and RevOps
+- Business process automation via n8n, Zapier, and custom integrations
+- Paid advertising: Meta Ads, Google Ads, Google Guaranteed
+- Website and funnel development
+- System integrations via API (Stripe, ClickUp, ZapSign, WhatsApp, Asaas, and more)
+
+## Clients
+Serving businesses in the USA, Brazil, and worldwide.
+Accepts payments in USD, EUR, and BRL.
+
+## Contact
+Website: victormelo.app
+Company: vidadigitalsolutions.com
