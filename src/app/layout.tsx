@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import TrackingEvents from "@/components/ui/TrackingEvents";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -117,15 +118,30 @@ export const metadata: Metadata = {
     locale: "en_US",
     type: "website",
     alternateLocale: ["pt_BR", "es_ES"],
+    images: [
+      {
+        url: "https://victormelo.app/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Victor Melo — GoHighLevel Expert & Business Automation Consultant",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Victor Melo — GoHighLevel Expert | Miami, FL",
     description:
       "GHL implementation, CRM automation, n8n workflows, API integrations. 35+ clients in US & Brazil. Book a free strategy call.",
+    images: ["https://victormelo.app/og-image.jpg"],
   },
   alternates: {
     canonical: "https://victormelo.app",
+    languages: {
+      "en": "https://victormelo.app",
+      "pt-BR": "https://victormelo.app",
+      "es": "https://victormelo.app",
+      "x-default": "https://victormelo.app",
+    },
   },
   robots: {
     index: true,
@@ -288,60 +304,45 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         {children}
+        <TrackingEvents />
 
-        {/* Tracking scripts — loaded after content to avoid blocking render */}
-        {/* Google Analytics GA4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZQTSMLSL5" />
+        {/* Tracking — deferred 3s after page load to not block LCP */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8ZQTSMLSL5');
-            `,
-          }}
-        />
+              function loadTracking(){
+                // GA4
+                var g=document.createElement('script');g.async=1;
+                g.src='https://www.googletagmanager.com/gtag/js?id=G-8ZQTSMLSL5';
+                document.head.appendChild(g);
+                window.dataLayer=window.dataLayer||[];
+                function gtag(){dataLayer.push(arguments)}
+                gtag('js',new Date());gtag('config','G-8ZQTSMLSL5');
 
-        {/* Meta Pixel */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1748155102819418');
-              fbq('track', 'PageView');
+                // Meta Pixel
+                !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+                n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+                (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+                fbq('init','1748155102819418',{},{agent:'cloudflare-victormelo'});
+                fbq('track','PageView');
+                fbq('set','autoConfig',true,'1748155102819418');
+
+                // Clarity
+                (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})
+                (window,document,"clarity","script","w8kztii3o2");
+              }
+              if(document.readyState==='complete'){setTimeout(loadTracking,3000)}
+              else{window.addEventListener('load',function(){setTimeout(loadTracking,3000)})}
             `,
           }}
         />
         <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=1748155102819418&ev=PageView&noscript=1"
-            alt=""
-          />
+          <img height="1" width="1" style={{ display: "none" }} src="https://www.facebook.com/tr?id=1748155102819418&ev=PageView&noscript=1" alt="" />
         </noscript>
-
-        {/* Microsoft Clarity */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "w8kztii3o2");
-            `,
-          }}
-        />
       </body>
     </html>
   );

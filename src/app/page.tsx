@@ -1,17 +1,21 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { I18nProvider } from "@/lib/i18n-context";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
-import LogoBar from "@/components/sections/LogoBar";
-import Services from "@/components/sections/Services";
-import About from "@/components/sections/About";
-import Skills from "@/components/sections/Skills";
-import Portfolio from "@/components/sections/Portfolio";
-import Reviews from "@/components/sections/Reviews";
-import FAQ from "@/components/sections/FAQ";
-import Contact from "@/components/sections/Contact";
+import FloatingWhatsApp from "@/components/ui/FloatingWhatsApp";
+
+// Lazy load below-fold sections
+const LogoBar = dynamic(() => import("@/components/sections/LogoBar"));
+const Services = dynamic(() => import("@/components/sections/Services"));
+const About = dynamic(() => import("@/components/sections/About"));
+const Skills = dynamic(() => import("@/components/sections/Skills"));
+const Portfolio = dynamic(() => import("@/components/sections/Portfolio"));
+const Reviews = dynamic(() => import("@/components/sections/Reviews"));
+const FAQ = dynamic(() => import("@/components/sections/FAQ"));
+const Contact = dynamic(() => import("@/components/sections/Contact"));
 
 export default function Home() {
   return (
@@ -29,6 +33,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <FloatingWhatsApp />
     </I18nProvider>
   );
 }
