@@ -13,8 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title:
-    "Victor Melo | GoHighLevel Implementation Specialist & Business Automation",
+  title: "Victor Melo — GoHighLevel Expert | Business Automation | Miami, FL",
   description:
     "I help businesses automate operations, close more clients, and scale using GoHighLevel, n8n, and custom integrations. Based in Miami, FL — serving clients in the US, Brazil, and worldwide.",
   keywords: [
@@ -83,6 +82,7 @@ export default function RootLayout({
                 "https://www.youtube.com/@Victor_Melo_io",
                 "https://facebook.com/Victor.melo.io",
                 "https://tiktok.com/@victor.melo.io",
+                "https://www.linkedin.com/in/victormeloio/",
               ],
               worksFor: {
                 "@type": "Organization",

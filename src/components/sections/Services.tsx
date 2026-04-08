@@ -1,6 +1,7 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n-context";
+import FadeIn from "@/components/ui/FadeIn";
 
 const serviceIcons = [
   <svg key="ghl" width="32" height="32" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -14,41 +15,54 @@ const serviceIcons = [
   </svg>,
 ];
 
+const ctaLabels = { en: "Get Started", pt: "Começar", es: "Empezar" } as const;
+
 export default function Services() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   return (
     <section id="services" className="py-24 bg-zinc-950">
       <div className="max-w-6xl mx-auto px-6">
-        <p className="text-emerald-400 font-medium text-sm tracking-widest uppercase mb-3">
-          {t.services.label}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-          {t.services.headline}
-        </h2>
-        <p className="text-zinc-400 max-w-2xl mb-12">{t.services.subtitle}</p>
+        <FadeIn>
+          <p className="text-emerald-400 font-medium text-sm tracking-widest uppercase mb-3">
+            {t.services.label}
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
+            {t.services.headline}
+          </h2>
+          <p className="text-zinc-400 max-w-2xl mb-12">{t.services.subtitle}</p>
+        </FadeIn>
 
         <div className="grid md:grid-cols-3 gap-6">
           {t.services.items.map((service, i) => (
-            <div
-              key={i}
-              className="group bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-8 hover:border-emerald-500/30 transition-all"
-            >
-              <div className="text-emerald-400 mb-5">{serviceIcons[i]}</div>
-              <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
-              <p className="text-zinc-400 text-sm leading-relaxed mb-6">
-                {service.description}
-              </p>
-              <div className="pt-4 border-t border-zinc-800/50">
-                <p className="text-emerald-400 font-semibold text-sm">{service.price}</p>
+            <FadeIn key={i} delay={i * 0.1}>
+              <div className="glass-card p-8 flex flex-col h-full">
+                <div className="text-emerald-400 mb-5">{serviceIcons[i]}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
+                <p className="text-zinc-400 text-sm leading-relaxed flex-1">
+                  {service.description}
+                </p>
+                <a
+                  href="https://wa.me/14382985740"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 text-sm font-medium transition-colors"
+                >
+                  {ctaLabels[locale]}
+                  <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
 
-        <p className="text-center text-zinc-500 italic mt-12 text-sm">
-          &ldquo;{t.services.footer}&rdquo;
-        </p>
+        <FadeIn delay={0.3}>
+          <p className="text-center text-zinc-500 italic mt-12 text-sm">
+            &ldquo;{t.services.footer}&rdquo;
+          </p>
+        </FadeIn>
       </div>
     </section>
   );

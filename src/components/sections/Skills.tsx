@@ -1,10 +1,12 @@
 "use client";
 
 import { useI18n } from "@/lib/i18n-context";
+import FadeIn from "@/components/ui/FadeIn";
 
 const skillGroups = [
   {
     key: "crm" as const,
+    featured: true,
     items: ["GoHighLevel", "ClickUp", "HubSpot", "Quasar CRM"],
     icon: (
       <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -14,6 +16,7 @@ const skillGroups = [
   },
   {
     key: "ads" as const,
+    featured: false,
     items: ["Meta Ads", "Google Ads", "Google Guaranteed", "TikTok Ads"],
     icon: (
       <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -23,6 +26,7 @@ const skillGroups = [
   },
   {
     key: "dev" as const,
+    featured: false,
     items: ["n8n", "Webhooks / API", "Stripe", "Zapier", "ZapSign", "Asaas", "Next.js", "Cloudflare"],
     icon: (
       <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -32,6 +36,7 @@ const skillGroups = [
   },
   {
     key: "strategy" as const,
+    featured: false,
     items: ["RevOps", "Sales Pipeline", "Tracking & Analytics", "AI Workflows", "Process Automation"],
     icon: (
       <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
@@ -47,32 +52,44 @@ export default function Skills() {
   return (
     <section id="skills" className="py-24 bg-zinc-900/30">
       <div className="max-w-6xl mx-auto px-6">
-        <p className="text-emerald-400 font-medium text-sm tracking-widest uppercase mb-3">
-          {t.skills.label}
-        </p>
-        <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12">
-          {t.skills.headline}
-        </h2>
+        <FadeIn>
+          <p className="text-emerald-400 font-medium text-sm tracking-widest uppercase mb-3">
+            {t.skills.label}
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-12">
+            {t.skills.headline}
+          </h2>
+        </FadeIn>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillGroups.map((group) => (
-            <div
-              key={group.key}
-              className="bg-zinc-900/50 border border-zinc-800/50 rounded-2xl p-6 hover:border-emerald-500/30 transition-colors"
-            >
-              <div className="text-emerald-400 mb-4">{group.icon}</div>
-              <h3 className="text-white font-semibold mb-4">
-                {t.skills.categories[group.key]}
-              </h3>
-              <ul className="space-y-2">
-                {group.items.map((item) => (
-                  <li key={item} className="flex items-center gap-2 text-sm text-zinc-400">
-                    <div className="w-1.5 h-1.5 bg-emerald-400/60 rounded-full shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          {skillGroups.map((group, i) => (
+            <FadeIn key={group.key} delay={i * 0.1}>
+              <div
+                className={`glass-card p-6 h-full ${
+                  group.featured
+                    ? "!border-emerald-500/30 !bg-emerald-500/[0.06] ring-1 ring-emerald-500/20"
+                    : ""
+                }`}
+              >
+                {group.featured && (
+                  <span className="inline-block text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-2 py-0.5 rounded-full mb-3">
+                    Core
+                  </span>
+                )}
+                <div className="text-emerald-400 mb-4">{group.icon}</div>
+                <h3 className="text-white font-semibold mb-4">
+                  {t.skills.categories[group.key]}
+                </h3>
+                <ul className="space-y-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-zinc-400">
+                      <div className="w-1.5 h-1.5 bg-emerald-400/60 rounded-full shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </div>
