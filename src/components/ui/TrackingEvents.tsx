@@ -2,18 +2,50 @@
 
 import { useEffect } from "react";
 
+const CAPI_ENDPOINT = "https://meta-capi-victormelo.suporte-vidamkt.workers.dev";
+
+function getCookie(name: string): string | undefined {
+  const match = document.cookie.match(new RegExp(`${name}=([^;]+)`));
+  return match?.[1];
+}
+
+function sendServerEvent(eventName: string, customData?: Record<string, unknown>) {
+  fetch(CAPI_ENDPOINT, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      event_name: eventName,
+      event_source_url: window.location.href,
+      user_agent: navigator.userAgent,
+      fbc: getCookie("_fbc"),
+      fbp: getCookie("_fbp"),
+      custom_data: customData,
+    }),
+    keepalive: true,
+  }).catch(() => {});
+}
+
 export default function TrackingEvents() {
+  // Send PageView server event on mount
+  useEffect(() => {
+    // Delay to not block render
+    const timer = setTimeout(() => {
+      sendServerEvent("PageView");
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     function trackEvent(action: string, category: string, label: string) {
       // GA4
-      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).gtag) {
+      if ((window as unknown as Record<string, unknown>).gtag) {
         (window as unknown as { gtag: (...args: unknown[]) => void }).gtag("event", action, {
           event_category: category,
           event_label: label,
         });
       }
-      // Meta Pixel
-      if (typeof window !== "undefined" && (window as unknown as Record<string, unknown>).fbq) {
+      // Meta Pixel (browser)
+      if ((window as unknown as Record<string, unknown>).fbq) {
         (window as unknown as { fbq: (...args: unknown[]) => void }).fbq("trackCustom", action, {
           category,
           label,
@@ -32,18 +64,22 @@ export default function TrackingEvents() {
       // WhatsApp clicks
       if (href.includes("wa.me")) {
         trackEvent("Contact", "WhatsApp", trackAttr || href);
+        sendServerEvent("Contact", { content_category: "WhatsApp", content_name: trackAttr || href });
       }
       // Phone calls
       else if (href.startsWith("tel:")) {
         trackEvent("Contact", "Phone", href);
+        sendServerEvent("Contact", { content_category: "Phone", content_name: href });
       }
       // Booking clicks
       else if (href.includes("/booking")) {
         trackEvent("Lead", "Booking", "booking_page");
+        sendServerEvent("Lead", { content_category: "Booking", content_name: "booking_page" });
       }
       // Email clicks
       else if (href.startsWith("mailto:")) {
         trackEvent("Contact", "Email", href);
+        sendServerEvent("Contact", { content_category: "Email", content_name: href });
       }
       // External links
       else if (href.startsWith("http") && !href.includes("victormelo.app")) {
