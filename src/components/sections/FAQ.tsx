@@ -8,8 +8,8 @@ import FadeIn from "@/components/ui/FadeIn";
 const faqData: Record<Locale, { q: string; a: string }[]> = {
   en: [
     {
-      q: "Do you work with companies outside of Brazil?",
-      a: "Yes. I have an LLC registered in Miami, FL. I serve clients in the US, Brazil, and worldwide. I accept payments in USD, EUR, and BRL.",
+      q: "Is this worth the investment for my size of business?",
+      a: "Most clients see ROI within the first 30 days. The cost of lost leads, manual follow-ups, and disconnected tools is far greater than the investment. Automation pays for itself in weeks, not months — and keeps working 24/7 without a salary.",
     },
     {
       q: "How long does an implementation take?",
@@ -30,8 +30,8 @@ const faqData: Record<Locale, { q: string; a: string }[]> = {
   ],
   pt: [
     {
-      q: "Vocês trabalham com empresas fora do Brasil?",
-      a: "Sim. Tenho uma LLC registrada em Miami, FL. Atendo clientes nos EUA, Brasil e no mundo todo. Aceito pagamentos em USD, EUR e BRL.",
+      q: "Esse investimento vale a pena pro tamanho do meu negócio?",
+      a: "A maioria dos clientes vê retorno nos primeiros 30 dias. O custo de leads perdidos, follow-ups manuais e ferramentas desconectadas é muito maior que o investimento. Automação se paga em semanas, não meses — e trabalha 24/7 sem salário.",
     },
     {
       q: "Quanto tempo leva uma implementação?",
@@ -52,8 +52,8 @@ const faqData: Record<Locale, { q: string; a: string }[]> = {
   ],
   es: [
     {
-      q: "¿Trabajan con empresas fuera de Brasil?",
-      a: "Sí. Tengo una LLC registrada en Miami, FL. Atendo clientes en EE.UU., Brasil y en todo el mundo. Acepto pagos en USD, EUR y BRL.",
+      q: "¿Vale la pena esta inversión para el tamaño de mi negocio?",
+      a: "La mayoría de los clientes ven retorno en los primeros 30 días. El costo de leads perdidos, follow-ups manuales y herramientas desconectadas es mucho mayor que la inversión. La automatización se paga en semanas, no meses — y trabaja 24/7 sin salario.",
     },
     {
       q: "¿Cuánto tiempo toma una implementación?",

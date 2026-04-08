@@ -14,7 +14,7 @@ export const translations = {
       name: "Victor Melo",
       title: "GoHighLevel Implementation Specialist",
       subtitle:
-        "I help businesses in the US, Brazil, and beyond automate their operations, close more clients, and scale — without hiring more people.",
+        "I turn disconnected tools and manual processes into automated systems that close clients 24/7 — so you can scale without the overhead.",
       cta: "Let's Talk",
       ctaSecondary: "See My Work",
     },
@@ -141,7 +141,7 @@ export const translations = {
       name: "Victor Melo",
       title: "Especialista em Implementação GoHighLevel",
       subtitle:
-        "Ajudo empresas nos EUA, Brasil e além a automatizar operações, fechar mais clientes e escalar — sem contratar mais pessoas.",
+        "Transformo ferramentas desconectadas e processos manuais em sistemas automatizados que fecham clientes 24/7 — para você escalar sem aumentar custos.",
       cta: "Vamos Conversar",
       ctaSecondary: "Ver Meu Trabalho",
     },
@@ -268,7 +268,7 @@ export const translations = {
       name: "Victor Melo",
       title: "Especialista en Implementación GoHighLevel",
       subtitle:
-        "Ayudo a empresas en EE.UU., Brasil y más a automatizar sus operaciones, cerrar más clientes y escalar — sin contratar más personas.",
+        "Transformo herramientas desconectadas y procesos manuales en sistemas automatizados que cierran clientes 24/7 — para que escales sin aumentar costos.",
       cta: "Hablemos",
       ctaSecondary: "Ver Mi Trabajo",
     },

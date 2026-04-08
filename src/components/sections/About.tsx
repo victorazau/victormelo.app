@@ -19,7 +19,8 @@ export default function About() {
       {/* Miami skyline background */}
       <div className="absolute inset-0">
         <img
-          src="/miami-skyline.jpg"
+          src="/miami-skyline.webp"
+              loading="lazy"
           alt=""
           className="w-full h-full object-cover"
         />

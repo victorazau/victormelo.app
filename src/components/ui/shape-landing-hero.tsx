@@ -251,17 +251,10 @@ function HeroGeometric({
                 href={ctaSecondaryHref}
                 className="inline-flex items-center gap-2 border border-white/[0.12] text-zinc-300 hover:text-white hover:border-white/[0.25] font-medium px-8 py-3.5 rounded-full transition-all"
               >
-                {ctaSecondary}
-                <svg
-                  width="16"
-                  height="16"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M19 9l-7 7-7-7" />
+                <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                  <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                 </svg>
+                {ctaSecondary}
               </a>
             )}
           </motion.div>
