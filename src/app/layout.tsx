@@ -66,18 +66,8 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <head>
-        {/* Google Analytics GA4 */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZQTSMLSL5" />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-8ZQTSMLSL5');
-            `,
-          }}
-        />
+        {/* Preload critical assets */}
+        <link rel="preload" href="/victor-melo.webp" as="image" type="image/webp" />
 
         <script
           type="application/ld+json"
@@ -133,6 +123,24 @@ export default function RootLayout({
           content="3bndFugRDEk5N_jHhCd9aegejmO3N9OsFyTHlYoAAZQ"
         />
 
+      </head>
+      <body className="min-h-full flex flex-col">
+        {children}
+
+        {/* Tracking scripts — loaded after content to avoid blocking render */}
+        {/* Google Analytics GA4 */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZQTSMLSL5" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-8ZQTSMLSL5');
+            `,
+          }}
+        />
+
         {/* Meta Pixel */}
         <script
           dangerouslySetInnerHTML={{
@@ -172,8 +180,7 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className="min-h-full flex flex-col">{children}</body>
+      </body>
     </html>
   );
 }
