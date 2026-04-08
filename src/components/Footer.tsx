@@ -81,10 +81,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-zinc-800/30 text-center">
+        <div className="mt-8 pt-8 border-t border-zinc-800/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">
             &copy; {new Date().getFullYear()} Victor Melo. {t.footer.rights}
           </p>
+          <div className="flex items-center gap-4">
+            <a href="/privacy" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Privacy</a>
+            <a href="/terms" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Terms</a>
+            <a href="/cookies" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">Cookies</a>
+          </div>
         </div>
       </div>
     </footer>
