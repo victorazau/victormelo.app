@@ -22,7 +22,7 @@ export default function LogoBar() {
   const { locale } = useI18n();
 
   return (
-    <section className="py-12 bg-zinc-950 border-y border-zinc-800/30">
+    <section className="hidden md:block py-12 bg-zinc-950 border-y border-zinc-800/30">
       <div className="max-w-6xl mx-auto px-6">
         <p className="text-center text-xs text-zinc-500 uppercase tracking-widest mb-8">
           {labels[locale]}

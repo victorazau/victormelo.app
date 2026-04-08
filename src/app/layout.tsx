@@ -13,27 +13,71 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Victor Melo — GoHighLevel Expert | Business Automation | Miami, FL",
+  title: "Victor Melo — GoHighLevel Expert | CRM Automation & Business Systems | Miami, FL",
   description:
-    "I help businesses automate operations, close more clients, and scale using GoHighLevel, n8n, and custom integrations. Based in Miami, FL — serving clients in the US, Brazil, and worldwide.",
+    "Victor Melo is a GoHighLevel implementation specialist and business automation consultant based in Miami, FL. Expert in GHL setup, CRM automation, n8n workflows, Meta Ads, Google Ads, API integrations, sales pipelines, RevOps, and AI-powered business systems. Serving companies in the US, Brazil, and worldwide.",
   keywords: [
-    "Victor Melo",
-    "GoHighLevel specialist",
-    "GHL implementation",
-    "business automation",
-    "CRM automation",
-    "GoHighLevel expert",
-    "n8n automation",
-    "marketing automation",
-    "RevOps consultant",
-    "Miami automation consultant",
+    // Brand
+    "Victor Melo", "Victor Melo GoHighLevel", "Victor Melo automation", "Victor Melo Miami",
+    "Vida Digital Solutions", "Vida Digital Solutions LLC",
+    // GHL specific
+    "GoHighLevel specialist", "GoHighLevel expert", "GoHighLevel implementation",
+    "GoHighLevel setup", "GoHighLevel consultant", "GoHighLevel agency",
+    "GoHighLevel developer", "GoHighLevel integrations", "GoHighLevel automation",
+    "GHL implementation", "GHL setup", "GHL expert", "GHL consultant",
+    "GHL automation", "GHL specialist near me", "GHL certified expert",
+    "GoHighLevel CRM setup", "GoHighLevel pipeline setup", "GoHighLevel onboarding",
+    "GoHighLevel white label", "GoHighLevel SaaS setup",
+    // CRM & Automation
+    "CRM automation", "CRM implementation", "CRM setup service",
+    "business automation consultant", "business process automation",
+    "marketing automation agency", "marketing automation specialist",
+    "sales automation", "lead automation", "workflow automation",
+    "automated follow-up", "automated lead nurturing", "automated billing",
+    // RevOps
+    "RevOps consultant", "revenue operations", "sales operations consultant",
+    "revenue operations specialist", "RevOps agency",
+    // Integrations
+    "n8n automation", "n8n workflows", "n8n integrations",
+    "API integrations", "Zapier expert", "webhook integrations",
+    "Stripe integration", "ClickUp integration", "ZapSign integration",
+    "WhatsApp automation", "WhatsApp business automation",
+    // Ads
+    "Meta Ads expert", "Facebook Ads consultant", "Google Ads specialist",
+    "Google Guaranteed setup", "paid advertising consultant",
+    // Location-based
+    "automation consultant Miami", "CRM consultant Miami FL",
+    "GoHighLevel Miami", "marketing automation Miami",
+    "business automation Florida", "CRM specialist South Florida",
+    "automation consultant USA", "GHL expert United States",
+    // Portuguese keywords
+    "especialista GoHighLevel", "implementação GoHighLevel Brasil",
+    "automação de negócios", "automação CRM", "consultor de automação",
+    "integração de sistemas", "automação comercial",
+    "agência de automação marketing", "automação WhatsApp",
+    "régua de cobrança automática", "funil de vendas automatizado",
+    // Spanish keywords
+    "especialista GoHighLevel", "automatización de negocios",
+    "consultor CRM", "automatización empresarial",
+    // Industry-specific
+    "CRM for cleaning companies", "CRM for law firms", "CRM for accountants",
+    "CRM for real estate", "CRM for service businesses",
+    "automation for small business", "automation for agencies",
+    // Comparison/alternative keywords
+    "GoHighLevel vs HubSpot", "GoHighLevel vs Salesforce",
+    "HubSpot alternative", "Salesforce alternative for small business",
+    "all-in-one CRM solution", "affordable CRM automation",
+    // AI & modern
+    "AI business automation", "AI-powered CRM", "AI workflow automation",
+    "ChatGPT business automation", "AI lead qualification",
   ],
   authors: [{ name: "Victor Melo" }],
   creator: "Victor Melo",
+  publisher: "Vida Digital Solutions LLC",
   openGraph: {
-    title: "Victor Melo | GoHighLevel Specialist & Business Automation",
+    title: "Victor Melo — GoHighLevel Expert | CRM Automation & Business Systems",
     description:
-      "I help businesses automate operations, close more clients, and scale. Based in Miami, FL.",
+      "GoHighLevel implementation specialist. I automate business operations, build CRM systems, and integrate any tool via API. Based in Miami, FL — serving the US, Brazil, and worldwide. 35+ clients across 3 countries.",
     url: "https://victormelo.app",
     siteName: "Victor Melo",
     locale: "en_US",
@@ -42,9 +86,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Victor Melo | GoHighLevel Specialist",
+    title: "Victor Melo — GoHighLevel Expert | Miami, FL",
     description:
-      "Business automation consultant based in Miami, FL. GoHighLevel, n8n, CRM integrations.",
+      "GHL implementation, CRM automation, n8n workflows, API integrations. 35+ clients in US & Brazil. Book a free strategy call.",
   },
   alternates: {
     canonical: "https://victormelo.app",
@@ -52,6 +96,19 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  other: {
+    "geo.region": "US-FL",
+    "geo.placename": "Miami",
+    "geo.position": "25.7617;-80.1918",
+    ICBM: "25.7617, -80.1918",
   },
 };
 
@@ -69,6 +126,7 @@ export default function RootLayout({
         {/* Preload critical assets */}
         <link rel="preload" href="/victor-melo.webp" as="image" type="image/webp" />
 
+        {/* Schema.org — Person */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -76,44 +134,98 @@ export default function RootLayout({
               "@context": "https://schema.org",
               "@type": "Person",
               name: "Victor Melo",
-              jobTitle: "GoHighLevel Implementation Specialist",
-              description:
-                "Business automation consultant specializing in GoHighLevel, CRM automation, and system integrations.",
+              givenName: "Victor",
+              familyName: "Melo",
+              birthDate: "1997",
+              jobTitle: "GoHighLevel Implementation Specialist & Business Automation Consultant",
+              description: "Victor Melo is a GoHighLevel certified specialist and business automation consultant based in Miami, FL. He helps businesses automate operations, build CRM systems, integrate tools via API, and scale revenue using GoHighLevel, n8n, ClickUp, Stripe, and AI-powered workflows. Early GHL adopter since 2023 with 35+ clients across 3 countries.",
               url: "https://victormelo.app",
+              image: "https://victormelo.app/victor-melo.webp",
+              email: "info@victormelo.app",
+              telephone: "+14382985740",
               sameAs: [
                 "https://instagram.com/victor.melo.io",
                 "https://www.youtube.com/@Victor_Melo_io",
                 "https://facebook.com/Victor.melo.io",
                 "https://tiktok.com/@victor.melo.io",
                 "https://www.linkedin.com/in/victormeloio/",
+                "https://victormelo.app/bio",
               ],
               worksFor: {
                 "@type": "Organization",
                 name: "Vida Digital Solutions LLC",
                 url: "https://vidadigitalsolutions.com",
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "Miami",
-                  addressRegion: "FL",
-                  addressCountry: "US",
-                },
+                foundingDate: "2022",
+                address: { "@type": "PostalAddress", addressLocality: "Miami", addressRegion: "FL", addressCountry: "US" },
               },
               knowsAbout: [
-                "GoHighLevel",
-                "CRM Automation",
-                "Business Process Automation",
-                "n8n",
-                "Meta Ads",
-                "Google Ads",
-                "System Integration",
+                "GoHighLevel", "GoHighLevel Implementation", "GoHighLevel CRM", "GoHighLevel Automation",
+                "CRM Automation", "CRM Implementation", "CRM Setup",
+                "Business Process Automation", "Marketing Automation", "Sales Automation",
+                "n8n", "n8n Workflows", "Zapier", "Webhook Integrations", "API Integrations",
+                "Meta Ads", "Facebook Ads", "Google Ads", "Google Guaranteed",
+                "Stripe Integration", "ClickUp", "ZapSign", "Asaas",
+                "WhatsApp Business Automation", "Revenue Operations", "RevOps",
+                "Sales Pipeline Optimization", "Lead Nurturing", "Automated Follow-up",
+                "AI Business Automation", "AI Workflows", "Automated Billing",
+                "Website Development", "Landing Page Development", "Funnel Building",
+                "Next.js", "Cloudflare", "Tailwind CSS",
               ],
-              nationality: "Brazilian",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Miami",
-                addressRegion: "FL",
-                addressCountry: "US",
+              nationality: { "@type": "Country", name: "Brazil" },
+              address: { "@type": "PostalAddress", addressLocality: "Miami", addressRegion: "FL", addressCountry: "US" },
+              areaServed: [
+                { "@type": "Country", name: "United States" },
+                { "@type": "Country", name: "Brazil" },
+                { "@type": "Place", name: "Global" },
+              ],
+            }),
+          }}
+        />
+        {/* Schema.org — ProfessionalService */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "ProfessionalService",
+              name: "Victor Melo — GoHighLevel & Automation Consulting",
+              description: "GoHighLevel implementation, CRM automation, business process automation, API integrations, and RevOps consulting. Serving businesses in the US, Brazil, and worldwide.",
+              url: "https://victormelo.app",
+              image: "https://victormelo.app/victor-melo.webp",
+              telephone: "+14382985740",
+              email: "info@victormelo.app",
+              address: { "@type": "PostalAddress", streetAddress: "", addressLocality: "Miami", addressRegion: "FL", postalCode: "", addressCountry: "US" },
+              geo: { "@type": "GeoCoordinates", latitude: "25.7617", longitude: "-80.1918" },
+              areaServed: ["US", "BR", "Global"],
+              priceRange: "$$$",
+              openingHoursSpecification: { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], opens: "09:00", closes: "18:00" },
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Services",
+                itemListElement: [
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "GoHighLevel Implementation & RevOps", description: "Complete GHL ecosystem setup: pipelines, automations, integrations, onboarding, sales operations, and financial workflows." } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Business Automation & Integrations", description: "Automate any business process via n8n, GHL, or Zapier. Connect any system with an API: Stripe, ClickUp, ZapSign, WhatsApp, Meta Ads, Google." } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website & Funnel Development", description: "High-converting landing pages, websites, and sales funnels built to capture leads and drive revenue 24/7." } },
+                ],
               },
+              aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "15", bestRating: "5" },
+            }),
+          }}
+        />
+        {/* Schema.org — FAQ */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                { "@type": "Question", name: "Is GoHighLevel implementation worth the investment for my business?", acceptedAnswer: { "@type": "Answer", text: "Most clients see ROI within the first 30 days. The cost of lost leads, manual follow-ups, and disconnected tools is far greater than the investment. Automation pays for itself in weeks, not months — and keeps working 24/7 without a salary." } },
+                { "@type": "Question", name: "How long does a GoHighLevel implementation take?", acceptedAnswer: { "@type": "Answer", text: "Basic implementations: 2-4 weeks. Complex projects: 4-8 weeks. Everything is scoped and defined before we start." } },
+                { "@type": "Question", name: "Do I need to already have GoHighLevel?", acceptedAnswer: { "@type": "Answer", text: "No. Victor handles the full setup from scratch, or can work with your existing GHL account. You can also use Quasar CRM, a white-label platform." } },
+                { "@type": "Question", name: "What systems can Victor Melo integrate?", acceptedAnswer: { "@type": "Answer", text: "Any system with an API: Stripe, Asaas, ClickUp, ZapSign, WhatsApp, Meta Ads, Google Ads, n8n, Zapier, and many more." } },
+                { "@type": "Question", name: "How does payment work?", acceptedAnswer: { "@type": "Answer", text: "Payment is milestone-based. Accepted methods: Stripe, Wise, wire transfer, and PIX. Contracts are signed digitally via ZapSign." } },
+              ],
             }),
           }}
         />

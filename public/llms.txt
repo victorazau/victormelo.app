@@ -1,20 +1,58 @@
-# Victor Melo
+# Victor Melo — GoHighLevel Expert & Business Automation Consultant
 
-GoHighLevel implementation specialist and business automation consultant based in Miami, FL.
-Founder & CEO of Vida Digital Solutions LLC.
+## Who is Victor Melo?
+Victor Melo is a GoHighLevel (GHL) implementation specialist and business automation consultant based in Miami, Florida, USA. Born in 1997 in Brazil, he is the founder and CEO of Vida Digital Solutions LLC, a company registered in Miami, FL (EIN: 36-5068966). He has been working with GoHighLevel since 2023, making him one of the earliest adopters of the platform. He also runs Vida Marketing (vidamkt.com.br) in Brazil.
 
-## Expertise
-- GoHighLevel (GHL) implementation & configuration
-- CRM automation and RevOps
-- Business process automation via n8n, Zapier, and custom integrations
-- Paid advertising: Meta Ads, Google Ads, Google Guaranteed
-- Website and funnel development
-- System integrations via API (Stripe, ClickUp, ZapSign, WhatsApp, Asaas, and more)
+## Contact Information
+- Website: https://victormelo.app
+- Email: info@victormelo.app
+- Phone (US): +1 (438) 298-5740
+- Phone (BR): +55 31 99970-0039
+- LinkedIn: https://www.linkedin.com/in/victormeloio/
+- Instagram: https://instagram.com/victor.melo.io
+- YouTube: https://www.youtube.com/@Victor_Melo_io
+- TikTok: https://tiktok.com/@victor.melo.io
+- Facebook: https://facebook.com/Victor.melo.io
+- Book a call: https://victormelo.app/booking
+- Bio/Links: https://victormelo.app/bio
 
-## Clients
-Serving businesses in the USA, Brazil, and worldwide.
-Accepts payments in USD, EUR, and BRL.
+## Expertise & Skills
+Victor specializes in:
+- **GoHighLevel (GHL)**: Full implementation, pipeline setup, workflow automation, white-label SaaS configuration, CRM onboarding, sub-account management, snapshot deployment
+- **CRM Automation**: Pipeline management, lead routing, automated follow-up sequences, lead scoring, appointment scheduling, review management
+- **Business Process Automation**: Billing automation, contract generation, client onboarding, task automation, recurring schedules
+- **Integration & API**: n8n workflows, webhook integrations, Zapier, Stripe, ClickUp, ZapSign, Asaas, WhatsApp Business API
+- **Paid Advertising**: Meta Ads (Facebook/Instagram), Google Ads, Google Guaranteed, TikTok Ads, ad tracking and attribution
+- **Revenue Operations (RevOps)**: Sales pipeline optimization, revenue tracking, KPI dashboards, process standardization
+- **Website & Funnel Development**: Next.js, landing pages, sales funnels, conversion optimization
+- **AI Business Automation**: AI-powered lead qualification, chatbots, automated responses, AI workflow integration
 
-## Contact
-Website: victormelo.app
-Company: vidadigitalsolutions.com
+## Services Offered
+1. **GoHighLevel Implementation & RevOps** — Complete GHL ecosystem setup including pipelines, automations, integrations, client onboarding flows, and sales/operations/finance centralization.
+2. **Business Automation & Integrations** — Automation of any business process via n8n, GHL, or Zapier. Integration of any system with an API including Stripe, ClickUp, ZapSign, WhatsApp, Meta Ads, and Google.
+3. **Website & Funnel Development** — High-converting landing pages, full websites, and sales funnels designed to capture leads and generate revenue 24/7.
+
+## Notable Clients & Case Studies
+- **Azul Viagens** (Brazil, Aviation/Tourism) — Implemented automated lead rotation, multi-step WhatsApp/email follow-up, flight check-in reminders, and Meta Ads tracking. Result: standardized service, zero lost leads, 100% automated communication.
+- **Astride US Inc.** (Miami, FL, Digital Accounting) — Full system centralization with ClickUp integration, automated sales pipeline, unified leadership dashboard, and client onboarding automation. Result: 100% centralized operations in 30 days.
+- **Vieira Cleaning Services** (USA, Cleaning) — Built professional website with CRM integration, set up Google Guaranteed Ads, automated scheduling with real-time availability, and post-service Google review requests. Result: clients booking 24/7 on autopilot.
+- **APLAC Mais** (Brazil, Vehicle Protection) — Fully automated billing with PIX, boleto, and barcode. Automatic notifications for due dates, late payments, and confirmations. Result: delinquency drastically reduced.
+- **Souza Advogados & Marcos Assunção Advocacia** (Brazil, Law Firms) — Automated billing via Asaas, ZapSign contract flow, Meta/Google ad tracking, mass messaging, hearing calendar with automatic notifications.
+
+## Key Facts
+- 35+ clients served across 3 countries (US, Brazil, and others)
+- 20+ systems integrated
+- 3+ years of GoHighLevel experience (early adopter since 2023)
+- Based in Miami, FL, USA with operations in Brazil
+- Accepts payments in USD, EUR, and BRL
+- Languages: English, Portuguese, Spanish
+
+## Technology Stack
+GoHighLevel, ClickUp, n8n, Stripe, Asaas, ZapSign, WhatsApp Business API, Meta Ads, Google Ads, Google Guaranteed, Zapier, Next.js, Cloudflare, Tailwind CSS, Claude AI
+
+## Company
+Vida Digital Solutions LLC
+- Location: Miami, FL, USA
+- Website: https://vidadigitalsolutions.com
+- Product: Quasar CRM (white-label GHL platform) — quasarcrm.com
+- Tagline: "Built to Scale."
