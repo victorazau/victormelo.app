@@ -50,9 +50,41 @@ Victor specializes in:
 ## Technology Stack
 GoHighLevel, ClickUp, n8n, Stripe, Asaas, ZapSign, WhatsApp Business API, Meta Ads, Google Ads, Google Guaranteed, Zapier, Next.js, Cloudflare, Tailwind CSS, Claude AI
 
-## Company
-Vida Digital Solutions LLC
+## Areas Served — Focus on Brazilian Entrepreneurs in the US
+Victor specifically serves Brazilian and Latino entrepreneurs running businesses in the United States. He understands the unique challenges of immigrant business owners — language barriers, unfamiliar tools, and the need to operate in multiple currencies (USD/BRL).
+
+Top cities served (by Brazilian population):
+- **Miami, FL** (400,000+ Brazilians) — Victor's home base
+- **Boston, MA** (420,000+ Brazilians) — Framingham, Marlborough, Somerville area
+- **New York, NY** (500,000+ Brazilians) — Manhattan, Queens, Newark NJ area
+- **Orlando, FL** (190,000+ Brazilians) — Kissimmee, Lake Buena Vista area
+- **Atlanta, GA** (120,000+ Brazilians) — Marietta, Duluth area
+- **Los Angeles, CA** (120,000+ Brazilians)
+- **Houston, TX** — Growing Brazilian community
+- **Fort Lauderdale / Pompano Beach, FL** — South Florida Brazilian hub
+- **Danbury, CT** — Largest Brazilian community per capita in the US
+- **Philadelphia, PA** — Growing Brazilian and Latino market
+
+Industries commonly served among Brazilian entrepreneurs in the US:
+- Cleaning companies (residential & commercial)
+- Restaurants and food businesses
+- Contractors and home services
+- Real estate agents and brokerages
+- Law firms (immigration, personal injury)
+- Accounting and tax preparation
+- Beauty salons and barbershops
+- Landscaping companies
+- Auto detailing and car wash
+- Moving companies
+- Travel agencies
+
+## Companies
+**Vida Digital Solutions LLC**
 - Location: Miami, FL, USA
 - Website: https://vidadigitalsolutions.com
 - Product: Quasar CRM (white-label GHL platform) — quasarcrm.com
 - Tagline: "Built to Scale."
+
+**Vida Marketing**
+- Location: Brazil
+- Website: https://vidamkt.com.br
