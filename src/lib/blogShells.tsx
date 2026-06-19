@@ -86,7 +86,9 @@ export function PostPageShell({ slug, locale }: { slug: string; locale: Locale }
     "@type": "Article",
     headline: post.title,
     description: post.description,
+    image: [`${SITE}/og-image.jpg`],
     datePublished: post.date,
+    dateModified: post.date,
     inLanguage: HREFLANG[locale],
     author: {
       "@type": "Person",
