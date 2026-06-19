@@ -14,6 +14,7 @@ const About = dynamic(() => import("@/components/sections/About"));
 const Skills = dynamic(() => import("@/components/sections/Skills"));
 const Portfolio = dynamic(() => import("@/components/sections/Portfolio"));
 const Reviews = dynamic(() => import("@/components/sections/Reviews"));
+const BlogTeaser = dynamic(() => import("@/components/sections/BlogTeaser"));
 const FAQ = dynamic(() => import("@/components/sections/FAQ"));
 const Contact = dynamic(() => import("@/components/sections/Contact"));
 
@@ -29,6 +30,7 @@ export default function Home() {
         <Skills />
         <Portfolio />
         <Reviews />
+        <BlogTeaser />
         <FAQ />
         <Contact />
       </main>
