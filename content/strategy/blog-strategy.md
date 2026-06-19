@@ -8,7 +8,7 @@
 2. **Structure (required):** Intro (direct answer in 2-3 sentences) → `## Key Takeaways` (3-5 bullets) → 4-6 H2 sections → at least one Markdown comparison **table** when relevant → `## Frequently Asked Questions` (5+ Q&A using `**Q:**` / `**A:**` on consecutive lines) → `## Conclusion`.
 3. **Minimum 1200 words.** First paragraph answers the title question directly (this is what AI engines cite).
 4. **Honest, experience-based tone** ("I've implemented both…"). Personal brand = Victor Melo. Recommend GoHighLevel where it genuinely fits; acknowledge where competitors win. Honesty converts and protects trust.
-5. **The CTA is automatic** — the site injects the affiliate CTA (auto-link on first "GoHighLevel" mention, mid-article box, footer box) with token `victormelo`. Do NOT write CTAs or affiliate links into the content; just mention GoHighLevel naturally and recommend trying the free trial in the conclusion.
+5. **The CTA is automatic** — the site injects the affiliate CTA (auto-link on first "GoHighLevel" mention, mid-article box, footer box) with token `victormelo`. Do NOT write CTAs or affiliate links into the content; just mention GoHighLevel naturally and recommend trying the free trial in the conclusion. **Facts to keep accurate:** GoHighLevel's free trial is **14 days** (do NOT say 30). Plans: **Starter $97/mo, Unlimited $297/mo, Agency Pro (SaaS) $497/mo**.
 6. **AEO:** direct answer first, explicit definitions ("X is…"), concrete numbers/percentages, comparison tables, FAQ with self-contained answers, H2s phrased as real search questions.
 7. **English is the source language**; the workflow translates to PT and ES (shared EN slug across all three).
 

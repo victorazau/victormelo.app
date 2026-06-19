@@ -8,39 +8,40 @@ import { useI18n } from "@/lib/i18n-context";
 import type { Locale } from "@/lib/i18n";
 import type { Post, PostMeta } from "@/lib/posts";
 
-// Affiliate offer (Victor's personal GHL affiliate token). GHL changes these
-// paths over time, so it lives in one place. `pro-trial` is the canonical path.
-const AFFILIATE_URL = "https://www.gohighlevel.com/pro-trial?fp_ref=victormelo";
+// Affiliate offer (Victor's personal GHL affiliate token). `/pricing` shows all
+// three plans (Starter $97 / Unlimited $297 / Agency Pro $497) so the reader
+// self-selects the entry plan. GHL changes these paths over time — keep it here.
+const AFFILIATE_URL = "https://www.gohighlevel.com/pricing?fp_ref=victormelo";
 
 const ctaCopy = {
   en: {
-    midText: "Want to try GoHighLevel yourself? Start a 30-day free trial of the SaaS Pro plan.",
-    midBtn: "Start free trial →",
+    midText: "Want to try GoHighLevel yourself? Plans start at $97/mo, with a 14-day free trial.",
+    midBtn: "See plans & start free →",
     footHead: "Ready to try GoHighLevel?",
-    footSub: "Start with a 30-day free trial — no credit card required upfront.",
-    footBtn: "Start your free trial",
+    footSub: "Plans from $97/mo. Start with a 14-day free trial — no commitment.",
+    footBtn: "See plans & start free",
     disclosure: "Affiliate link — I may earn a commission at no extra cost to you.",
     related: "Keep reading",
     prev: "Previous",
     next: "Next",
   },
   pt: {
-    midText: "Quer testar o GoHighLevel? Comece 30 dias grátis no plano SaaS Pro.",
-    midBtn: "Testar grátis →",
+    midText: "Quer testar o GoHighLevel? Os planos começam em $97/mês, com 14 dias grátis.",
+    midBtn: "Ver planos e testar grátis →",
     footHead: "Pronto para testar o GoHighLevel?",
-    footSub: "Comece com 30 dias grátis — sem cartão de crédito no início.",
-    footBtn: "Começar teste grátis",
+    footSub: "Planos a partir de $97/mês. Comece com 14 dias grátis — sem compromisso.",
+    footBtn: "Ver planos e testar grátis",
     disclosure: "Link de afiliado — posso receber comissão sem custo extra para você.",
     related: "Continue lendo",
     prev: "Anterior",
     next: "Próximo",
   },
   es: {
-    midText: "¿Quieres probar GoHighLevel? Empieza 30 días gratis en el plan SaaS Pro.",
-    midBtn: "Probar gratis →",
+    midText: "¿Quieres probar GoHighLevel? Los planes empiezan en $97/mes, con 14 días gratis.",
+    midBtn: "Ver planes y probar gratis →",
     footHead: "¿Listo para probar GoHighLevel?",
-    footSub: "Empieza con 30 días gratis — sin tarjeta de crédito al inicio.",
-    footBtn: "Empezar prueba gratis",
+    footSub: "Planes desde $97/mes. Empieza con 14 días gratis — sin compromiso.",
+    footBtn: "Ver planes y probar gratis",
     disclosure: "Enlace de afiliado — puedo recibir una comisión sin costo extra para ti.",
     related: "Sigue leyendo",
     prev: "Anterior",
