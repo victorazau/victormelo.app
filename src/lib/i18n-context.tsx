@@ -26,15 +26,20 @@ function detectLocale(): Locale {
   return "en";
 }
 
-export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("en");
+export function I18nProvider({ children, initialLocale }: { children: ReactNode; initialLocale?: Locale }) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale ?? "en");
 
-  // Detect language on mount
+  // On blog pages the locale is fixed by the URL (initialLocale); elsewhere
+  // detect from the browser/localStorage.
   useEffect(() => {
+    if (initialLocale) {
+      document.documentElement.lang = initialLocale === "pt" ? "pt-BR" : initialLocale;
+      return;
+    }
     const detected = detectLocale();
     setLocaleState(detected);
     document.documentElement.lang = detected;
-  }, []);
+  }, [initialLocale]);
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);

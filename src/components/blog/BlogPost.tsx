@@ -4,8 +4,8 @@ import Link from "next/link";
 import ReactMarkdown, { type Components } from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Clock, ChevronLeft, ChevronRight } from "lucide-react";
-import { useI18n } from "@/lib/i18n-context";
 import type { Locale } from "@/lib/i18n";
+import { blogUrl, blogIndexUrl } from "@/lib/blogUrl";
 import type { Post, PostMeta } from "@/lib/posts";
 
 // Affiliate offer (Victor's personal GHL affiliate token). `/pricing` shows all
@@ -201,41 +201,46 @@ function ArticleBody({ content, locale }: { content: string; locale: Locale }) {
   );
 }
 
+const LANG_LABEL: Record<Locale, string> = { en: "EN", pt: "PT", es: "ES" };
+
 interface Props {
-  postEN: Post | null;
-  postPT: Post | null;
-  postES: Post | null;
-  relatedEN: PostMeta[];
-  relatedPT: PostMeta[];
-  relatedES: PostMeta[];
-  adjEN: { prev: PostMeta | null; next: PostMeta | null };
-  adjPT: { prev: PostMeta | null; next: PostMeta | null };
-  adjES: { prev: PostMeta | null; next: PostMeta | null };
+  post: Post;
+  related: PostMeta[];
+  adj: { prev: PostMeta | null; next: PostMeta | null };
+  locale: Locale;
+  available: Locale[];
 }
 
-export function BlogPostView(props: Props) {
-  const { locale } = useI18n();
-
-  const byLocale = { en: props.postEN, pt: props.postPT, es: props.postES };
-  const post = byLocale[locale] || props.postEN || props.postPT || props.postES;
-  if (!post) return null;
-
-  const related =
-    (locale === "pt" ? props.relatedPT : locale === "es" ? props.relatedES : props.relatedEN) ||
-    props.relatedEN;
-  const adj = locale === "pt" ? props.adjPT : locale === "es" ? props.adjES : props.adjEN;
+export function BlogPostView({ post, related, adj, locale, available }: Props) {
   const c = ctaCopy[locale];
-
   const dateLocale = locale === "pt" ? "pt-BR" : locale === "es" ? "es-ES" : "en-US";
 
   return (
     <article className="mx-auto max-w-3xl px-5 pt-28 pb-20">
-      {/* Breadcrumb (language follows the Navbar switcher via shared i18n context) */}
-      <nav className="flex items-center gap-2 mb-6 text-[13px] text-zinc-500">
-        <Link href="/" className="hover:text-emerald-400">Home</Link>
-        <span>/</span>
-        <Link href="/blog" className="hover:text-emerald-400">Blog</Link>
-      </nav>
+      {/* Breadcrumb + language switch — real per-language URLs (each indexable) */}
+      <div className="flex items-center justify-between gap-4 mb-6 text-[13px]">
+        <nav className="flex items-center gap-2 text-zinc-500">
+          <Link href="/" className="hover:text-emerald-400">Home</Link>
+          <span>/</span>
+          <Link href={blogIndexUrl(locale)} className="hover:text-emerald-400">Blog</Link>
+        </nav>
+        {available.length > 1 && (
+          <div className="flex items-center gap-1 rounded-full border border-white/10 p-0.5">
+            {available.map((l) => (
+              <Link
+                key={l}
+                href={blogUrl(post.slug, l)}
+                hrefLang={l}
+                className={`px-2.5 py-1 rounded-full text-[12px] font-semibold transition-colors ${
+                  locale === l ? "bg-emerald-500 text-black" : "text-zinc-400 hover:text-white"
+                }`}
+              >
+                {LANG_LABEL[l]}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
 
       <span className="inline-block text-[11px] font-semibold tracking-wide uppercase text-emerald-400 mb-3">
         {post.category}
@@ -282,7 +287,7 @@ export function BlogPostView(props: Props) {
             {related.map((rp) => (
               <Link
                 key={rp.slug}
-                href={`/blog/${rp.slug}`}
+                href={blogUrl(rp.slug, locale)}
                 className="block rounded-xl border border-white/10 hover:border-emerald-500/40 bg-white/[0.02] hover:bg-white/[0.04] p-4 transition-colors"
               >
                 <span className="text-[10px] font-semibold uppercase tracking-wide text-emerald-400">{rp.category}</span>
@@ -296,13 +301,13 @@ export function BlogPostView(props: Props) {
       {/* Prev / Next */}
       <div className="flex items-center justify-between mt-12 pt-6 border-t border-white/10 gap-4">
         {adj.prev ? (
-          <Link href={`/blog/${adj.prev.slug}`} className="group flex items-center gap-2 text-[13px] text-zinc-400 hover:text-emerald-400">
+          <Link href={blogUrl(adj.prev.slug, locale)} className="group flex items-center gap-2 text-[13px] text-zinc-400 hover:text-emerald-400">
             <ChevronLeft className="w-4 h-4" />
             <span className="line-clamp-1">{c.prev}</span>
           </Link>
         ) : <span />}
         {adj.next ? (
-          <Link href={`/blog/${adj.next.slug}`} className="group flex items-center gap-2 text-[13px] text-zinc-400 hover:text-emerald-400 text-right">
+          <Link href={blogUrl(adj.next.slug, locale)} className="group flex items-center gap-2 text-[13px] text-zinc-400 hover:text-emerald-400 text-right">
             <span className="line-clamp-1">{c.next}</span>
             <ChevronRight className="w-4 h-4" />
           </Link>

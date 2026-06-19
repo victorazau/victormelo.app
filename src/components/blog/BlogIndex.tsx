@@ -1,7 +1,6 @@
-"use client";
-
 import Link from "next/link";
-import { useI18n } from "@/lib/i18n-context";
+import type { Locale } from "@/lib/i18n";
+import { blogUrl } from "@/lib/blogUrl";
 import type { PostMeta } from "@/lib/posts";
 
 const copy = {
@@ -10,18 +9,7 @@ const copy = {
   es: { title: "Blog", sub: "Reseñas honestas, comparativas y guías sobre GoHighLevel y automatización de CRM.", empty: "Publicaciones próximamente." },
 };
 
-export function BlogIndex({
-  postsEN,
-  postsPT,
-  postsES,
-}: {
-  postsEN: PostMeta[];
-  postsPT: PostMeta[];
-  postsES: PostMeta[];
-}) {
-  const { locale } = useI18n();
-  const posts = (locale === "pt" ? postsPT : locale === "es" ? postsES : postsEN);
-  const list = posts.length > 0 ? posts : postsEN;
+export function BlogIndex({ posts, locale }: { posts: PostMeta[]; locale: Locale }) {
   const c = copy[locale];
   const dateLocale = locale === "pt" ? "pt-BR" : locale === "es" ? "es-ES" : "en-US";
 
@@ -31,11 +19,11 @@ export function BlogIndex({
       <p className="mt-3 text-zinc-400 text-[16px] max-w-2xl">{c.sub}</p>
 
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
-        {list.length === 0 && <p className="text-zinc-500">{c.empty}</p>}
-        {list.map((p) => (
+        {posts.length === 0 && <p className="text-zinc-500">{c.empty}</p>}
+        {posts.map((p) => (
           <Link
             key={p.slug}
-            href={`/blog/${p.slug}`}
+            href={blogUrl(p.slug, locale)}
             className="group flex flex-col rounded-2xl border border-white/10 hover:border-emerald-500/40 bg-white/[0.02] hover:bg-white/[0.04] p-6 transition-colors"
           >
             <span className="text-[11px] font-semibold uppercase tracking-wide text-emerald-400">{p.category}</span>

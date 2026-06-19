@@ -53,6 +53,17 @@ jobs:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: npx wrangler pages deploy out --project-name=victormelo-app --branch=main --commit-dirty=true
 
+      - name: Ping IndexNow (Bing / Yandex)
+        if: steps.generate.outcome == 'success'
+        env:
+          SLUG: ${{ steps.generate.outputs.slug }}
+        run: |
+          KEY="a7f3c9e21b8d4f06a5c1e9b240d7f8a3"
+          curl -s -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json" \
+            -d "{\"host\":\"victormelo.app\",\"key\":\"$KEY\",\"keyLocation\":\"https://victormelo.app/$KEY.txt\",\"urlList\":[\"https://victormelo.app/blog/$SLUG\",\"https://victormelo.app/pt/blog/$SLUG\",\"https://victormelo.app/es/blog/$SLUG\"]}" \
+            && echo "IndexNow pinged for $SLUG" || echo "IndexNow ping failed (non-fatal)"
+
       - name: No new post — skipped
         if: steps.generate.outcome != 'success'
         run: echo "No new post generated this run (queue exhausted or slug collision). Nothing deployed."

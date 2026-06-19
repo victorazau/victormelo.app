@@ -1,0 +1,10 @@
+# Old GHL leadgen URLs — redirect to home (Google will update)
+/tmp/* / 301
+/tmp / 301
+
+# Old landing pages — redirect to home
+/curso-gratuito-ghl / 301
+/ghl-brasil / 301
+
+# www → non-www canonicalization
+https://www.victormelo.app/* https://victormelo.app/:splat 301!
