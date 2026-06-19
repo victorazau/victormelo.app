@@ -8,40 +8,49 @@ import type { Locale } from "@/lib/i18n";
 import { blogUrl, blogIndexUrl } from "@/lib/blogUrl";
 import type { Post, PostMeta } from "@/lib/posts";
 
-// Affiliate offer (Victor's personal GHL affiliate token). `/pricing` shows all
-// three plans (Starter $97 / Unlimited $297 / Agency Pro $497) so the reader
-// self-selects the entry plan. GHL changes these paths over time — keep it here.
-const AFFILIATE_URL = "https://www.gohighlevel.com/pricing?fp_ref=victormelo";
+// Affiliate offer (Victor's personal GHL affiliate token). The landing page is
+// chosen per post topic so each audience hits the page that converts best for
+// them — see reference_ghl_affiliate_links. GHL changes these paths over time.
+const AFF_BASE = "https://www.gohighlevel.com";
+const AFF_REF = "?fp_ref=victormelo";
+
+function affiliateUrl(post: { category?: string; slug?: string; title?: string }): string {
+  const hay = `${post.category || ""} ${post.slug || ""} ${post.title || ""}`.toLowerCase();
+  if (/\bai\b|ai agent|ai agents|artificial intelligence|agent studio/.test(hay)) return `${AFF_BASE}/ai${AFF_REF}`;
+  if (/saas mode|white[- ]?label|resell|reseller|agency mode/.test(hay)) return `${AFF_BASE}/pro-trial${AFF_REF}`;
+  if (/\bguide\b|how to|how-to|getting started|beginner|step[- ]by[- ]step|tutorial/.test(hay)) return `${AFF_BASE}/highlevel-bootcamp${AFF_REF}`;
+  return `${AFF_BASE}/pricing${AFF_REF}`; // comparisons / reviews / alternatives / pricing
+}
 
 const ctaCopy = {
   en: {
-    midText: "Want to try GoHighLevel yourself? Plans start at $97/mo, with a 14-day free trial.",
-    midBtn: "See plans & start free →",
+    midText: "Want to try GoHighLevel yourself? Plans start at $97/mo — start a free trial.",
+    midBtn: "Start free trial →",
     footHead: "Ready to try GoHighLevel?",
-    footSub: "Plans from $97/mo. Start with a 14-day free trial — no commitment.",
-    footBtn: "See plans & start free",
+    footSub: "Plans from $97/mo. Start your free trial — no commitment.",
+    footBtn: "Start your free trial",
     disclosure: "Affiliate link — I may earn a commission at no extra cost to you.",
     related: "Keep reading",
     prev: "Previous",
     next: "Next",
   },
   pt: {
-    midText: "Quer testar o GoHighLevel? Os planos começam em $97/mês, com 14 dias grátis.",
-    midBtn: "Ver planos e testar grátis →",
+    midText: "Quer testar o GoHighLevel? Os planos começam em $97/mês — comece um teste grátis.",
+    midBtn: "Começar teste grátis →",
     footHead: "Pronto para testar o GoHighLevel?",
-    footSub: "Planos a partir de $97/mês. Comece com 14 dias grátis — sem compromisso.",
-    footBtn: "Ver planos e testar grátis",
+    footSub: "Planos a partir de $97/mês. Comece seu teste grátis — sem compromisso.",
+    footBtn: "Começar teste grátis",
     disclosure: "Link de afiliado — posso receber comissão sem custo extra para você.",
     related: "Continue lendo",
     prev: "Anterior",
     next: "Próximo",
   },
   es: {
-    midText: "¿Quieres probar GoHighLevel? Los planes empiezan en $97/mes, con 14 días gratis.",
-    midBtn: "Ver planes y probar gratis →",
+    midText: "¿Quieres probar GoHighLevel? Los planes empiezan en $97/mes — empieza una prueba gratis.",
+    midBtn: "Empezar prueba gratis →",
     footHead: "¿Listo para probar GoHighLevel?",
-    footSub: "Planes desde $97/mes. Empieza con 14 días gratis — sin compromiso.",
-    footBtn: "Ver planes y probar gratis",
+    footSub: "Planes desde $97/mes. Empieza tu prueba gratis — sin compromiso.",
+    footBtn: "Empezar prueba gratis",
     disclosure: "Enlace de afiliado — puedo recibir una comisión sin costo extra para ti.",
     related: "Sigue leyendo",
     prev: "Anterior",
@@ -138,7 +147,7 @@ function stripLeadingH1(content: string): string {
 }
 
 // Link the first plain-text "GoHighLevel" mention to the affiliate offer.
-function linkFirstGHLMention(md: string): string {
+function linkFirstGHLMention(md: string, url: string): string {
   const lines = md.split("\n");
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
@@ -146,7 +155,7 @@ function linkFirstGHLMention(md: string): string {
     if (/\]\(/.test(line) && /\[[^\]]*GoHighLevel/i.test(line)) continue;
     const idx = line.indexOf("GoHighLevel");
     if (idx === -1) continue;
-    lines[i] = line.slice(0, idx) + `[GoHighLevel](${AFFILIATE_URL})` + line.slice(idx + "GoHighLevel".length);
+    lines[i] = line.slice(0, idx) + `[GoHighLevel](${url})` + line.slice(idx + "GoHighLevel".length);
     return lines.join("\n");
   }
   return md;
@@ -169,13 +178,13 @@ function Markdown({ children }: { children: string }) {
   );
 }
 
-function InlineAffiliateCTA({ locale }: { locale: Locale }) {
+function InlineAffiliateCTA({ locale, affUrl }: { locale: Locale; affUrl: string }) {
   const c = ctaCopy[locale];
   return (
     <div className="my-9 rounded-2xl border border-emerald-500/30 bg-emerald-500/[0.07] p-5 flex flex-col sm:flex-row sm:items-center gap-4 sm:justify-between">
       <p className="text-[15px] text-zinc-200 font-medium leading-snug">{c.midText}</p>
       <a
-        href={AFFILIATE_URL}
+        href={affUrl}
         target="_blank"
         rel="sponsored noopener noreferrer"
         data-cta="affiliate"
@@ -188,14 +197,14 @@ function InlineAffiliateCTA({ locale }: { locale: Locale }) {
   );
 }
 
-function ArticleBody({ content, locale }: { content: string; locale: Locale }) {
-  const linked = linkFirstGHLMention(stripLeadingH1(content));
+function ArticleBody({ content, locale, affUrl }: { content: string; locale: Locale; affUrl: string }) {
+  const linked = linkFirstGHLMention(stripLeadingH1(content), affUrl);
   const [part1, part2] = splitAtMidH2(linked);
   if (!part2) return <Markdown>{part1}</Markdown>;
   return (
     <>
       <Markdown>{part1}</Markdown>
-      <InlineAffiliateCTA locale={locale} />
+      <InlineAffiliateCTA locale={locale} affUrl={affUrl} />
       <Markdown>{part2}</Markdown>
     </>
   );
@@ -213,6 +222,7 @@ interface Props {
 
 export function BlogPostView({ post, related, adj, locale, available }: Props) {
   const c = ctaCopy[locale];
+  const affUrl = affiliateUrl(post);
   const dateLocale = locale === "pt" ? "pt-BR" : locale === "es" ? "es-ES" : "en-US";
 
   return (
@@ -259,7 +269,7 @@ export function BlogPostView({ post, related, adj, locale, available }: Props) {
       <div className="h-px bg-white/10 my-8" />
 
       <div>
-        <ArticleBody content={post.content} locale={locale} />
+        <ArticleBody content={post.content} locale={locale} affUrl={affUrl} />
       </div>
 
       {/* Footer CTA */}
@@ -267,7 +277,7 @@ export function BlogPostView({ post, related, adj, locale, available }: Props) {
         <p className="text-white text-[20px] font-bold tracking-tight mb-1.5">{c.footHead}</p>
         <p className="text-zinc-400 text-[14px] mb-5">{c.footSub}</p>
         <a
-          href={AFFILIATE_URL}
+          href={affUrl}
           target="_blank"
           rel="sponsored noopener noreferrer"
           data-cta="affiliate"

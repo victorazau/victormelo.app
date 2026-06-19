@@ -64,6 +64,18 @@ jobs:
             -d "{\"host\":\"victormelo.app\",\"key\":\"$KEY\",\"keyLocation\":\"https://victormelo.app/$KEY.txt\",\"urlList\":[\"https://victormelo.app/blog/$SLUG\",\"https://victormelo.app/pt/blog/$SLUG\",\"https://victormelo.app/es/blog/$SLUG\"]}" \
             && echo "IndexNow pinged for $SLUG" || echo "IndexNow ping failed (non-fatal)"
 
+      - name: Google Indexing API (fast index on Google)
+        if: steps.generate.outcome == 'success'
+        continue-on-error: true
+        env:
+          GOOGLE_INDEXING_SA_JSON: ${{ secrets.GOOGLE_INDEXING_SA_JSON }}
+          SLUG: ${{ steps.generate.outputs.slug }}
+        run: |
+          node scripts/google-index.mjs \
+            "https://victormelo.app/blog/$SLUG" \
+            "https://victormelo.app/pt/blog/$SLUG" \
+            "https://victormelo.app/es/blog/$SLUG"
+
       - name: No new post — skipped
         if: steps.generate.outcome != 'success'
         run: echo "No new post generated this run (queue exhausted or slug collision). Nothing deployed."
