@@ -61,6 +61,15 @@ export default function TrackingEvents() {
       const href = link.getAttribute("href") || "";
       const trackAttr = link.getAttribute("data-track");
 
+      // Blog CTA clicks (affiliate) — measure which placement converts.
+      // event_category = cta type (affiliate), event_label = placement (inline|mid|footer).
+      const cta = link.getAttribute("data-cta");
+      if (cta) {
+        const placement = link.getAttribute("data-placement") || "unknown";
+        trackEvent("cta_click", cta, placement);
+        sendServerEvent("Lead", { content_category: `cta_${cta}`, content_name: placement });
+      }
+
       // WhatsApp clicks
       if (href.includes("wa.me")) {
         trackEvent("Contact", "WhatsApp", trackAttr || href);

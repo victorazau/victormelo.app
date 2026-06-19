@@ -22,11 +22,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: "#about", label: t.nav.about },
-    { href: "#skills", label: t.nav.skills },
-    { href: "#services", label: t.nav.services },
-    { href: "#portfolio", label: t.nav.portfolio },
-    { href: "#contact", label: t.nav.contact },
+    { href: "/#about", label: t.nav.about },
+    { href: "/#services", label: t.nav.services },
+    { href: "/#portfolio", label: t.nav.portfolio },
+    { href: "/blog", label: "Blog" },
+    { href: "/#contact", label: t.nav.contact },
   ];
 
   return (
@@ -38,7 +38,7 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a href="#" className="text-xl font-bold text-white tracking-tight">
+        <a href="/" className="text-xl font-bold text-white tracking-tight">
           victor<span className="text-emerald-400">melo</span>
         </a>
 
