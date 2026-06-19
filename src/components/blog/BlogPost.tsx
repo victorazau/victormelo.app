@@ -243,6 +243,45 @@ function AuthorBox({ locale }: { locale: Locale }) {
   );
 }
 
+const tldrLabel = { en: "Quick answer", pt: "Resposta rápida", es: "Respuesta rápida" };
+
+function TldrBox({ text, locale }: { text: string; locale: Locale }) {
+  return (
+    <div className="mb-8 rounded-2xl border-l-2 border-emerald-500 bg-emerald-500/[0.06] px-5 py-4">
+      <p className="text-[11px] font-bold uppercase tracking-wide text-emerald-400 mb-1">{tldrLabel[locale]}</p>
+      <p className="text-[15px] text-zinc-200 leading-relaxed">{text}</p>
+    </div>
+  );
+}
+
+const winnerCopy = {
+  en: { head: "Our pick: GoHighLevel", sub: "Best all-in-one value for most agencies and service businesses.", btn: "Try GoHighLevel free" },
+  pt: { head: "Nossa escolha: GoHighLevel", sub: "Melhor custo-benefício tudo-em-um pra maioria das agências e negócios de serviço.", btn: "Testar o GoHighLevel grátis" },
+  es: { head: "Nuestra elección: GoHighLevel", sub: "Mejor relación todo-en-uno para la mayoría de agencias y negocios de servicios.", btn: "Probar GoHighLevel gratis" },
+};
+
+function WinnerCTA({ locale, affUrl }: { locale: Locale; affUrl: string }) {
+  const w = winnerCopy[locale];
+  return (
+    <div className="mt-10 rounded-2xl border border-emerald-500/40 bg-emerald-500/[0.08] p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:justify-between">
+      <div>
+        <p className="text-white font-bold text-[16px]">🏆 {w.head}</p>
+        <p className="text-zinc-300 text-[13px] mt-0.5">{w.sub}</p>
+      </div>
+      <a
+        href={affUrl}
+        target="_blank"
+        rel="sponsored noopener noreferrer"
+        data-cta="affiliate"
+        data-placement="winner"
+        className="shrink-0 inline-flex items-center justify-center px-5 py-2.5 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-xl text-[14px] transition-colors"
+      >
+        {w.btn}
+      </a>
+    </div>
+  );
+}
+
 interface Props {
   post: Post;
   related: PostMeta[];
@@ -254,6 +293,8 @@ interface Props {
 export function BlogPostView({ post, related, adj, locale, available }: Props) {
   const c = ctaCopy[locale];
   const affUrl = affiliateUrl(post);
+  const tldr = post.summary || post.description;
+  const isComparison = /compar/i.test(post.category) || /\bvs\b|-vs-/.test(post.slug);
   const dateLocale = locale === "pt" ? "pt-BR" : locale === "es" ? "es-ES" : "en-US";
 
   return (
@@ -299,9 +340,13 @@ export function BlogPostView({ post, related, adj, locale, available }: Props) {
 
       <div className="h-px bg-white/10 my-8" />
 
+      {tldr && <TldrBox text={tldr} locale={locale} />}
+
       <div>
         <ArticleBody content={post.content} locale={locale} affUrl={affUrl} />
       </div>
+
+      {isComparison && <WinnerCTA locale={locale} affUrl={affUrl} />}
 
       {/* Footer CTA */}
       <div className="mt-12 rounded-2xl border border-emerald-500/30 bg-gradient-to-br from-emerald-500/[0.12] to-emerald-500/[0.04] p-8 text-center">

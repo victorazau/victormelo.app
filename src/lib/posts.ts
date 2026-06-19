@@ -12,6 +12,7 @@ export interface PostMeta {
   keywords: string[];
   readTime: string;
   author: string;
+  summary?: string; // 1-2 sentence direct answer (TL;DR / AEO); falls back to description
 }
 
 export interface Post extends PostMeta {

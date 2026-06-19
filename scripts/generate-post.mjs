@@ -59,7 +59,8 @@ HARD RULES:
 - Structure: intro (direct answer in 2-3 sentences) -> "## Key Takeaways" (3-5 bullets) -> 4-6 H2 sections -> at least one Markdown comparison TABLE when relevant -> "## Frequently Asked Questions" with 5+ Q&A where each pair is two consecutive lines "**Q:** ..." then "**A:** ..." -> "## Conclusion".
 - Minimum 1200 words. First paragraph answers the title question directly.
 - Honest, first-person, experience-based tone ("I've implemented...", "in my experience"). Recommend GoHighLevel where it genuinely fits; acknowledge where competitors win.
-- Mention "GoHighLevel" naturally in the body (the site auto-links the first mention to the affiliate offer). Do NOT write any CTA, link, button or affiliate URL into the body.
+- Mention "GoHighLevel" naturally in the body (the site auto-links the first mention to the affiliate offer). Do NOT write any affiliate link, CTA, button or external URL in the body (the site adds those).
+- Internal links: where it reads naturally, add 1-2 links to other already-published posts (list provided below) using markdown [anchor text](/blog/their-slug). Only use slugs from the provided list — never invent one. These internal links are the ONLY links you write.
 - Accurate facts: GoHighLevel's free trial is 14 days (NEVER say 30). Plans: Starter $97/mo, Unlimited $297/mo, Agency Pro/SaaS $497/mo.
 - AEO: direct answers, explicit definitions, concrete numbers, comparison tables, self-contained FAQ answers, H2s phrased as real search questions.
 `;
@@ -67,6 +68,13 @@ HARD RULES:
 async function main() {
   const strategy = fs.readFileSync(STRATEGY, "utf8");
   const covered = existingSlugs();
+  // Published posts (slug + title) the model can link to internally.
+  const enDir = path.join(POSTS, "en");
+  const published = (fs.existsSync(enDir) ? fs.readdirSync(enDir).filter((f) => f.endsWith(".mdx")) : []).map((f) => {
+    const c = fs.readFileSync(path.join(enDir, f), "utf8");
+    const m = c.match(/^title:\s*"?(.+?)"?\s*$/m);
+    return { slug: f.replace(/\.mdx$/, ""), title: m ? m[1] : f.replace(/\.mdx$/, "") };
+  });
 
   // 1) Generate the English post.
   const en = await ask({
@@ -78,9 +86,10 @@ async function main() {
     user:
       `Editorial strategy:\n${strategy}\n\n` +
       `Already-published slugs (do NOT repeat these topics): ${JSON.stringify(covered)}\n\n` +
+      `Posts you can link to internally (use 1-2 naturally as [anchor](/blog/their-slug)): ${JSON.stringify(published)}\n\n` +
       `Pick the single best next topic from the strategy's Topic queue that is NOT already published (or, if the queue is exhausted, a fresh high-commercial-intent comparison/review/alternatives topic about GoHighLevel). Write the full article now.\n\n` +
       `Return JSON with exactly these fields:\n` +
-      `{"slug": "kebab-case-english-slug", "title": "...", "description": "150-160 char meta description", "category": "one of: Comparison, Review, Alternatives, Pricing, Guide", "keywords": ["6-8 SEO keywords"], "readTime": "N min", "body": "the full markdown body following the HARD RULES"}`,
+      `{"slug": "kebab-case-english-slug", "title": "...", "description": "150-160 char meta description", "summary": "1-2 sentence direct answer to the title question for a TL;DR box (max 280 chars)", "category": "one of: Comparison, Review, Alternatives, Pricing, Guide", "keywords": ["6-8 SEO keywords"], "readTime": "N min", "body": "the full markdown body following the HARD RULES"}`,
   });
 
   if (!en.slug || !en.body || !en.title) throw new Error("EN generation missing fields");
@@ -97,11 +106,11 @@ async function main() {
     translations[lang] = await ask({
       maxTokens: 8000,
       system:
-        `You are a professional ${langName} translator for marketing/SEO content. Translate faithfully and naturally (not literally). Preserve the Markdown structure EXACTLY: headings, the comparison table, lists, blockquotes, bold, and the FAQ format with "**Q:**" / "**A:**" on consecutive lines. Keep product names (GoHighLevel, HubSpot, etc.), prices and "GoHighLevel" spelling unchanged. Do not add or remove sections. Return ONLY a JSON object.`,
+        `You are a professional ${langName} translator for marketing/SEO content. Translate faithfully and naturally (not literally). Preserve the Markdown structure EXACTLY: headings, the comparison table, lists, blockquotes, bold, internal links (keep the (/blog/...) URLs EXACTLY as-is — only translate the anchor text), and the FAQ format with "**Q:**" / "**A:**" on consecutive lines. Keep product names (GoHighLevel, HubSpot, etc.), prices and "GoHighLevel" spelling unchanged. Do not add or remove sections. Return ONLY a JSON object.`,
       user:
         `Translate this article to ${langName}.\n\n` +
-        `Return JSON: {"title": "...", "description": "...", "category": "translated category", "body": "translated markdown body"}\n\n` +
-        `SOURCE:\n${JSON.stringify({ title: en.title, description: en.description, category: en.category, body: en.body })}`,
+        `Return JSON: {"title": "...", "description": "...", "summary": "...", "category": "translated category", "body": "translated markdown body"}\n\n` +
+        `SOURCE:\n${JSON.stringify({ title: en.title, description: en.description, summary: en.summary, category: en.category, body: en.body })}`,
     });
   }
 
@@ -111,10 +120,14 @@ async function main() {
   const stripH1 = (b) => b.replace(/^\s*#\s+.*(\r?\n)+/, "");
 
   const write = (lang, data, category) => {
+    let body = stripH1(data.body).trim();
+    // Localize in-body internal links so PT/ES readers stay in their language.
+    if (lang !== "en") body = body.replace(/\]\(\/blog\//g, `](/${lang}/blog/`);
     const fm = [
       "---",
       `title: ${q(data.title)}`,
       `description: ${q(data.description)}`,
+      `summary: ${q(data.summary || data.description)}`,
       `date: ${q(date)}`,
       `category: ${q(category)}`,
       `slug: ${q(en.slug)}`,
@@ -124,7 +137,7 @@ async function main() {
       `author: "Victor Melo"`,
       "---",
       "",
-      stripH1(data.body).trim(),
+      body,
       "",
     ].join("\n");
     const dir = path.join(POSTS, lang);
