@@ -212,6 +212,37 @@ function ArticleBody({ content, locale, affUrl }: { content: string; locale: Loc
 
 const LANG_LABEL: Record<Locale, string> = { en: "EN", pt: "PT", es: "ES" };
 
+const authorBio = {
+  en: "GoHighLevel specialist since 2023. I've automated 35+ businesses across the US, Brazil and beyond — and I share honest reviews and comparisons so you pick the right tools, not the hyped ones.",
+  pt: "Especialista em GoHighLevel desde 2023. Já automatizei 35+ negócios nos EUA, Brasil e além — e compartilho reviews e comparativos honestos pra você escolher a ferramenta certa, não a mais hypada.",
+  es: "Especialista en GoHighLevel desde 2023. He automatizado 35+ negocios en EE. UU., Brasil y más — y comparto reseñas y comparativas honestas para que elijas la herramienta correcta, no la más publicitada.",
+};
+
+function AuthorBox({ locale }: { locale: Locale }) {
+  const book = locale === "pt" ? "Agendar call" : locale === "es" ? "Agendar llamada" : "Book a call";
+  return (
+    <div className="mt-12 flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.02] p-5">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src="/victor-melo-sm.webp"
+        alt="Victor Melo — GoHighLevel specialist"
+        width={56}
+        height={56}
+        className="w-14 h-14 rounded-full object-cover border border-emerald-500/40 shrink-0"
+      />
+      <div>
+        <p className="text-white font-bold text-[15px]">Victor Melo</p>
+        <p className="text-zinc-400 text-[13px] leading-relaxed mt-1">{authorBio[locale]}</p>
+        <div className="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-[12px]">
+          <a href="https://www.linkedin.com/in/victormeloio/" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">LinkedIn</a>
+          <a href="https://www.youtube.com/@Victor_Melo_io" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">YouTube</a>
+          <Link href="/booking" className="text-emerald-400 hover:underline">{book}</Link>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 interface Props {
   post: Post;
   related: PostMeta[];
@@ -288,6 +319,9 @@ export function BlogPostView({ post, related, adj, locale, available }: Props) {
         </a>
         <p className="mt-4 text-[11px] text-zinc-600">{c.disclosure}</p>
       </div>
+
+      {/* Author E-E-A-T */}
+      <AuthorBox locale={locale} />
 
       {/* Related */}
       {related.length > 0 && (

@@ -88,7 +88,17 @@ export function PostPageShell({ slug, locale }: { slug: string; locale: Locale }
     description: post.description,
     datePublished: post.date,
     inLanguage: HREFLANG[locale],
-    author: { "@type": "Person", name: "Victor Melo", url: SITE },
+    author: {
+      "@type": "Person",
+      name: "Victor Melo",
+      url: SITE,
+      jobTitle: "GoHighLevel Implementation Specialist",
+      sameAs: [
+        "https://www.linkedin.com/in/victormeloio/",
+        "https://www.youtube.com/@Victor_Melo_io",
+        "https://instagram.com/victor.melo.io",
+      ],
+    },
     publisher: { "@type": "Organization", name: "Vida Digital Solutions LLC", url: "https://vidadigitalsolutions.com" },
     mainEntityOfPage: url,
   };
