@@ -75,6 +75,19 @@ jobs:
             "https://victormelo.app/blog/$SLUG" \
             "https://victormelo.app/pt/blog/$SLUG" \
             "https://victormelo.app/es/blog/$SLUG"
+      - name: Notify LinkedIn Personal (n8n)
+        if: steps.generate.outcome == 'success'
+        continue-on-error: true
+        env:
+          SLUG: ${{ steps.generate.outputs.slug }}
+          TITLE: ${{ steps.generate.outputs.title }}
+        run: |
+          curl -s -X POST "https://n8n.srv862416.hstgr.cloud/webhook/victor-melo-linkedin" \
+            -H "Content-Type: application/json" \
+            -d "$(jq -n --arg t "$TITLE" --arg s "$SLUG" \
+              '{title: $t, slug: $s, articleUrl: ("https://victormelo.app/blog/" + $s)}')" \
+            && echo "LinkedIn webhook triggered for $SLUG" \
+            || echo "LinkedIn webhook failed (non-fatal)"
 
       - name: No new post — skipped
         if: steps.generate.outcome != 'success'
