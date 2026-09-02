@@ -1,0 +1,153 @@
+---
+title: "GoHighLevel SaaS Mode Explained: Pricing, Setup and Profit (2026)"
+description: "GoHighLevel SaaS mode lets agencies resell the platform under their own brand. Learn pricing, setup steps, and realistic profit margins in 2026."
+summary: "GoHighLevel SaaS mode lets you white-label the platform and resell it to clients as your own software, creating recurring monthly revenue. It requires the Agency Pro plan at $497/mo and can generate thousands in monthly profit at scale."
+date: "2026-09-02"
+category: "Guide"
+slug: "gohighlevel-saas-mode-explained"
+lang: "en"
+keywords: ["GoHighLevel SaaS mode", "GoHighLevel white label", "resell GoHighLevel", "GoHighLevel Agency Pro", "GoHighLevel SaaS pricing", "GoHighLevel recurring revenue", "GoHighLevel reseller", "GoHighLevel $497 plan"]
+readTime: "9 min"
+author: "Victor Melo"
+---
+
+GoHighLevel SaaS mode is a feature exclusive to the Agency Pro plan ($497/mo) that lets you white-label the entire GoHighLevel platform and resell it to your clients under your own brand name, logo, and custom domain. Instead of charging clients for your time, you charge them a monthly software fee — and pocket the difference between what you pay GoHighLevel and what your clients pay you. I've helped multiple agencies set this up, and the economics can be genuinely compelling once you understand the mechanics.
+
+## Key Takeaways
+
+- SaaS mode is only available on the Agency Pro plan at $497/mo — not on Starter ($97) or Unlimited ($297)
+- You set your own client pricing; most agencies charge $97–$497/mo per client sub-account
+- At just 2 clients paying $297/mo each, SaaS mode pays for itself
+- Setup requires connecting a Twilio/Mailgun account, a Stripe account, and a custom domain
+- The biggest profit lever is automating onboarding so you can scale without adding headcount
+
+## What Exactly Is GoHighLevel SaaS Mode?
+
+SaaS mode is GoHighLevel's built-in reseller infrastructure. When you activate it, your clients never see the GoHighLevel brand — they see your brand. You get a custom login URL (e.g., app.youragency.com), your own logo in the dashboard, and the ability to create client sub-accounts with specific feature sets enabled or disabled.
+
+More importantly, SaaS mode connects directly to Stripe. You configure your pricing plans inside GoHighLevel, and when a client signs up through your branded portal, Stripe charges them automatically on a recurring basis. GoHighLevel handles the billing logic; you just collect the revenue.
+
+This is fundamentally different from the standard Agency Unlimited plan ($297/mo), where you can create sub-accounts for clients but there's no built-in client-facing billing or white-label login portal. SaaS mode is what turns GoHighLevel from a tool you use into a product you sell.
+
+## GoHighLevel SaaS Mode Pricing: What You Actually Pay
+
+The Agency Pro plan costs $497/mo (or roughly $397/mo if you commit annually). That's your baseline cost. On top of that, you'll have usage costs:
+
+- **Twilio** (SMS/calls): roughly $0.0075 per SMS segment, $0.0085/min for calls — you can pass these through to clients or bundle them in a usage allowance
+- **Mailgun or SendGrid** (email): fractions of a cent per email at normal agency volumes
+- **Stripe fees**: 2.9% + $0.30 per transaction on client payments
+
+Some agencies add a small markup on Twilio/Mailgun costs; others roll a usage allowance into their monthly price (e.g., "500 SMS included"). Both models work. The key point: your hard cost to operate the platform is predictable and relatively low.
+
+| Cost Item | Approximate Monthly Cost |
+|---|---|
+| Agency Pro plan | $497 |
+| Twilio (light usage, 5 clients) | $20–$60 |
+| Mailgun (5 clients, moderate sends) | $5–$20 |
+| Stripe fees (on $1,500 client revenue) | ~$45 |
+| **Total approximate cost** | **~$570–$620** |
+
+If you charge 5 clients $297/mo each, you're collecting $1,485 — a net margin of roughly $865/mo from five clients. That's before you add any service fees. Scale to 20 clients and the math becomes very interesting.
+
+## How to Set Up SaaS Mode: The Core Steps
+
+I'll be direct: setup takes 4–8 hours the first time if you're methodical. Here's the sequence I follow with clients:
+
+**1. Upgrade to Agency Pro and activate SaaS mode**
+Inside your agency account, go to Settings → Company → SaaS Configurator. Toggle SaaS mode on. You'll be prompted to connect Stripe.
+
+**2. Connect Stripe**
+This is non-negotiable. SaaS mode's automated billing runs entirely through Stripe. Connect your Stripe account (or create one — it takes 15 minutes to get approved for most businesses).
+
+**3. Set up Twilio and Mailgun**
+Create accounts on both platforms. Inside GoHighLevel's agency settings, add your Twilio Account SID and Auth Token, and your Mailgun API key. These power SMS, calls, and email for all your sub-accounts.
+
+**4. Configure your white-label domain**
+Point a subdomain (like app.youragency.com) to GoHighLevel's servers via a CNAME record. This is where your clients log in. GoHighLevel walks you through the DNS settings.
+
+**5. Build your pricing plans**
+In the SaaS Configurator, create the plans you'll offer — for example, a "Starter" plan at $197/mo with basic features, and a "Pro" plan at $397/mo with everything unlocked. For each plan, you control exactly which GoHighLevel features are visible to that tier.
+
+**6. Create a snapshot for client onboarding**
+A snapshot is a pre-built sub-account template — think funnels, automations, pipelines, and email templates relevant to your niche. When a new client signs up, you deploy the snapshot and they're operational in minutes instead of days. This is the single biggest time-saver in the whole SaaS model.
+
+**7. Build your client sign-up funnel**
+GoHighLevel lets you create a branded landing page where prospects can select a plan and pay directly through Stripe. Once they pay, a sub-account is auto-created and the snapshot is deployed. Done right, this is fully automated.
+
+If you want a deeper look at the operational side of running client accounts, my post on [how agencies make money with GoHighLevel SaaS mode](/blog/how-agencies-make-money-gohighlevel-saas-mode) covers the business model in more detail.
+
+## Is SaaS Mode Actually Profitable? Realistic Numbers
+
+Let me give you three scenarios based on what I've seen in practice:
+
+| Scenario | Clients | Price/Client | Gross Revenue | Net After Platform Costs | Net Margin |
+|---|---|---|---|---|---|
+| Early stage | 3 | $197/mo | $591/mo | ~$0 (break-even) | ~0% |
+| Growing | 10 | $247/mo | $2,470/mo | ~$1,850/mo | ~75% |
+| Scaled | 30 | $297/mo | $8,910/mo | ~$7,800/mo | ~87% |
+
+These numbers assume you're not charging separately for services — pure software revenue. In practice, most agencies layer a setup fee ($500–$2,000 one-time) and optional done-for-you services on top.
+
+The break-even point on the platform itself (just the $497 plan) is literally 3 clients at $197/mo. Most agencies I've worked with hit that within their first 30–60 days if they have an existing client base to offer it to.
+
+One honest caveat: the biggest risk isn't GoHighLevel's reliability — it's churn. If clients don't use the platform, they cancel. Your job is to make sure they get value fast (hence the snapshot + onboarding automation strategy above). Churn control is a bigger operational challenge than the technical setup.
+
+## SaaS Mode vs. Standard Agency Plans: Which Do You Need?
+
+| Feature | Starter ($97) | Unlimited ($297) | Agency Pro/SaaS ($497) |
+|---|---|---|---|
+| Sub-accounts | 1 | Unlimited | Unlimited |
+| White-label app | ❌ | ❌ | ✅ |
+| Client billing via Stripe | ❌ | ❌ | ✅ |
+| Custom login domain | ❌ | ❌ | ✅ |
+| AI features | Limited | Standard | Full |
+| SaaS snapshot automation | ❌ | ❌ | ✅ |
+| White-label Zap/desktop app | Add-on | Add-on | Included |
+
+If you're managing clients' accounts on their behalf (done-for-you agency model), the Unlimited plan at $297/mo is probably fine. If you want to resell software and create passive recurring revenue, you need the Agency Pro plan. There's no workaround — the billing infrastructure and white-label portal simply don't exist on lower tiers.
+
+For a broader look at how GoHighLevel stacks up as an agency platform, check my [best all-in-one CRM for agencies in 2026](/blog/best-all-in-one-crm-for-agencies-2026) breakdown.
+
+## Who Should (and Shouldn't) Use SaaS Mode
+
+**SaaS mode is a great fit if you:**
+- Already have 5+ clients or a warm audience you can pitch to
+- Work in a specific niche (HVAC, real estate, dental, etc.) where you can build one strong snapshot and sell it repeatedly
+- Want to shift from trading time for money to generating recurring revenue
+- Have the patience to invest 4–8 hours in setup before seeing returns
+
+**SaaS mode is NOT a good fit if you:**
+- Are brand new with zero clients and no audience — you'll pay $497/mo while you figure out sales
+- Serve enterprise clients who already have IT departments and won't accept a resold SaaS tool
+- Want a simple tool to manage your own marketing — the Starter or Unlimited plan is more appropriate
+
+My honest recommendation: start on Unlimited ($297/mo), get 3–5 clients using GoHighLevel's features, then upgrade to Agency Pro once you're confident in the value proposition and have warm prospects to pitch the software to.
+
+## Frequently Asked Questions
+
+**Q:** What plan do I need for GoHighLevel SaaS mode?
+**A:** You need the Agency Pro plan, which costs $497/mo (or approximately $397/mo billed annually). SaaS mode is not available on the Starter ($97) or Unlimited ($297) plans.
+
+**Q:** How does GoHighLevel handle client billing in SaaS mode?
+**A:** GoHighLevel integrates directly with your Stripe account. You set up pricing plans in the SaaS Configurator, and when clients sign up through your branded portal, Stripe charges them automatically on a recurring schedule. You receive the funds in your Stripe account, not GoHighLevel's.
+
+**Q:** Can clients see that the software is actually GoHighLevel?
+**A:** Not if you set it up correctly. SaaS mode gives you a custom login URL (your own domain), your own logo, brand colors, and a fully white-labeled interface. GoHighLevel's branding is removed. That said, tech-savvy clients can sometimes identify the underlying platform through browser inspection, but for the vast majority of SMB clients, it's completely invisible.
+
+**Q:** How long does SaaS mode setup take?
+**A:** In my experience, the core technical setup — Stripe connection, Twilio, Mailgun, custom domain, and basic pricing plans — takes 4–8 hours. Building a high-quality onboarding snapshot for your niche can take another 10–20 hours but only needs to be done once. After that, client onboarding is largely automated.
+
+**Q:** What's a realistic price to charge clients for white-labeled GoHighLevel?
+**A:** Most agencies I've seen charge between $97/mo and $497/mo depending on the feature set and niche. A common starting point is $197–$297/mo for a core plan including CRM, pipelines, two-way SMS, email marketing, and basic automation. Higher-tier plans ($397–$497/mo) typically add more advanced automation, AI features, or usage allowances.
+
+**Q:** Do I need a separate Twilio account for SaaS mode?
+**A:** Yes. You connect your own Twilio account to your GoHighLevel agency, and each client sub-account uses your Twilio credentials (or you can enable clients to connect their own). You pay Twilio's rates directly and can mark them up or roll them into your subscription price.
+
+**Q:** Is GoHighLevel SaaS mode worth it compared to building my own software?
+**A:** Overwhelmingly yes, for most agencies. Building a comparable platform from scratch (CRM, funnel builder, email/SMS automation, pipelines, reputation management, booking, AI) would cost hundreds of thousands of dollars and years of development. At $497/mo, you're renting a production-ready platform with an active development team shipping features every week.
+
+## Conclusion
+
+GoHighLevel SaaS mode is one of the most accessible paths to software-style recurring revenue available to marketing agencies today. The economics work — once you pass break-even (typically 3–5 clients), every additional client is nearly pure margin. The setup is real work, but it's one-time work. The ongoing operational lift, especially with a solid onboarding snapshot, is minimal.
+
+If you're an established agency with an existing client base, I'd seriously evaluate upgrading to Agency Pro and testing the SaaS model with a handful of clients before making a full pivot. Start the 14-day free trial, explore the SaaS Configurator, and run the numbers with your actual client roster in mind. The math will either make the case or it won't — and you'll know within the first two weeks.

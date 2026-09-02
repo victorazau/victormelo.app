@@ -1,0 +1,153 @@
+---
+title: "GoHighLevel SaaS Mode Explicado: Preços, Configuração e Lucro (2026)"
+description: "O modo SaaS do GoHighLevel permite que agências revendam a plataforma com sua própria marca. Saiba mais sobre preços, etapas de configuração e margens de lucro reais em 2026."
+summary: "O modo SaaS do GoHighLevel permite que você use a plataforma com white-label e a revenda para clientes como seu próprio software, gerando receita recorrente mensal. Ele exige o plano Agency Pro a $497/mês e pode gerar milhares de dólares em lucro mensal em escala."
+date: "2026-09-02"
+category: "Guia"
+slug: "gohighlevel-saas-mode-explained"
+lang: "pt"
+keywords: ["GoHighLevel SaaS mode", "GoHighLevel white label", "resell GoHighLevel", "GoHighLevel Agency Pro", "GoHighLevel SaaS pricing", "GoHighLevel recurring revenue", "GoHighLevel reseller", "GoHighLevel $497 plan"]
+readTime: "9 min"
+author: "Victor Melo"
+---
+
+O modo SaaS do GoHighLevel é um recurso exclusivo do plano Agency Pro ($497/mês) que permite aplicar white-label em toda a plataforma GoHighLevel e revendê-la aos seus clientes com o seu próprio nome de marca, logotipo e domínio personalizado. Em vez de cobrar dos clientes pelo seu tempo, você cobra uma mensalidade de software — e fica com a diferença entre o que paga ao GoHighLevel e o que seus clientes pagam a você. Já ajudei diversas agências a configurar isso, e a matemática pode ser realmente atraente quando você entende como funciona.
+
+## Principais Pontos
+
+- O modo SaaS está disponível apenas no plano Agency Pro a $497/mês — não nos planos Starter ($97) ou Unlimited ($297)
+- Você define seus próprios preços para clientes; a maioria das agências cobra de $97 a $497/mês por sub-conta de cliente
+- Com apenas 2 clientes pagando $297/mês cada, o modo SaaS já se paga
+- A configuração exige conectar uma conta Twilio/Mailgun, uma conta Stripe e um domínio personalizado
+- O maior alavancador de lucro é automatizar o onboarding para que você possa escalar sem aumentar a equipe
+
+## O Que É Exatamente o Modo SaaS do GoHighLevel?
+
+O modo SaaS é a infraestrutura de revenda integrada do GoHighLevel. Ao ativá-lo, seus clientes nunca veem a marca GoHighLevel — eles veem a sua marca. Você recebe uma URL de login personalizada (por exemplo, app.suaagencia.com), seu próprio logotipo no painel e a capacidade de criar sub-contas de clientes com conjuntos de recursos específicos habilitados ou desabilitados.
+
+Mais importante ainda, o modo SaaS se conecta diretamente ao Stripe. Você configura seus planos de preços dentro do GoHighLevel e, quando um cliente se cadastra pelo seu portal com sua marca, o Stripe cobra automaticamente de forma recorrente. O GoHighLevel gerencia a lógica de cobrança; você apenas recebe a receita.
+
+Isso é fundamentalmente diferente do plano padrão Agency Unlimited ($297/mês), em que você pode criar sub-contas para clientes, mas não há cobrança integrada voltada ao cliente nem portal de login com white-label. O modo SaaS é o que transforma o GoHighLevel de uma ferramenta que você usa em um produto que você vende.
+
+## Preços do Modo SaaS do GoHighLevel: O Que Você Realmente Paga
+
+O plano Agency Pro custa $497/mês (ou aproximadamente $397/mês no plano anual). Esse é o seu custo base. Além disso, você terá custos de uso:
+
+- **Twilio** (SMS/chamadas): aproximadamente $0,0075 por segmento de SMS, $0,0085/min para chamadas — você pode repassar esses custos aos clientes ou incluí-los em uma franquia de uso
+- **Mailgun ou SendGrid** (e-mail): frações de centavo por e-mail em volumes normais de agência
+- **Taxas do Stripe**: 2,9% + $0,30 por transação nos pagamentos dos clientes
+
+Algumas agências adicionam uma pequena margem sobre os custos do Twilio/Mailgun; outras incluem uma franquia de uso no preço mensal (por exemplo, "500 SMS incluídos"). Ambos os modelos funcionam. O ponto principal: seu custo fixo para operar a plataforma é previsível e relativamente baixo.
+
+| Item de Custo | Custo Mensal Aproximado |
+|---|---|
+| Plano Agency Pro | $497 |
+| Twilio (uso leve, 5 clientes) | $20–$60 |
+| Mailgun (5 clientes, envios moderados) | $5–$20 |
+| Taxas do Stripe (sobre $1.500 de receita de clientes) | ~$45 |
+| **Custo total aproximado** | **~$570–$620** |
+
+Se você cobrar de 5 clientes $297/mês cada, estará arrecadando $1.485 — uma margem líquida de aproximadamente $865/mês com apenas cinco clientes. Isso sem incluir nenhuma taxa de serviço. Escale para 20 clientes e a matemática fica muito interessante.
+
+## Como Configurar o Modo SaaS: As Etapas Principais
+
+Vou ser direto: a configuração leva de 4 a 8 horas da primeira vez se você for metódico. Esta é a sequência que sigo com os clientes:
+
+**1. Faça upgrade para o Agency Pro e ative o modo SaaS**
+Dentro da sua conta de agência, vá em Configurações → Empresa → SaaS Configurator. Ative o modo SaaS. Você será solicitado a conectar o Stripe.
+
+**2. Conecte o Stripe**
+Isso é indispensável. A cobrança automatizada do modo SaaS funciona inteiramente pelo Stripe. Conecte sua conta Stripe (ou crie uma — leva 15 minutos para ser aprovada na maioria das empresas).
+
+**3. Configure o Twilio e o Mailgun**
+Crie contas em ambas as plataformas. Nas configurações de agência do GoHighLevel, adicione seu Account SID e Auth Token do Twilio, além da sua chave de API do Mailgun. Eles alimentam SMS, chamadas e e-mail para todas as suas sub-contas.
+
+**4. Configure seu domínio com white-label**
+Aponte um subdomínio (como app.suaagencia.com) para os servidores do GoHighLevel por meio de um registro CNAME. É aqui que seus clientes fazem login. O GoHighLevel orienta você nas configurações de DNS.
+
+**5. Crie seus planos de preços**
+No SaaS Configurator, crie os planos que você oferecerá — por exemplo, um plano "Starter" a $197/mês com recursos básicos e um plano "Pro" a $397/mês com tudo desbloqueado. Para cada plano, você controla exatamente quais recursos do GoHighLevel ficam visíveis para aquela categoria.
+
+**6. Crie um snapshot para o onboarding de clientes**
+Um snapshot é um template de sub-conta pré-construído — funnels, automações, pipelines e templates de e-mail relevantes para o seu nicho. Quando um novo cliente se cadastra, você implanta o snapshot e ele entra em operação em minutos, não em dias. Este é o maior economizador de tempo em todo o modelo SaaS.
+
+**7. Crie seu funil de cadastro de clientes**
+O GoHighLevel permite criar uma landing page com sua marca onde os prospects podem selecionar um plano e pagar diretamente pelo Stripe. Assim que pagam, uma sub-conta é criada automaticamente e o snapshot é implantado. Feito corretamente, o processo é totalmente automatizado.
+
+Se quiser uma visão mais aprofundada do lado operacional de gerenciar contas de clientes, meu post sobre [como agências ganham dinheiro com o modo SaaS do GoHighLevel](/pt/blog/how-agencies-make-money-gohighlevel-saas-mode) aborda o modelo de negócio com mais detalhes.
+
+## O Modo SaaS É Realmente Lucrativo? Números Realistas
+
+Vou apresentar três cenários baseados no que já vi na prática:
+
+| Cenário | Clientes | Preço/Cliente | Receita Bruta | Líquido Após Custos da Plataforma | Margem Líquida |
+|---|---|---|---|---|---|
+| Fase inicial | 3 | $197/mês | $591/mês | ~$0 (ponto de equilíbrio) | ~0% |
+| Em crescimento | 10 | $247/mês | $2.470/mês | ~$1.850/mês | ~75% |
+| Em escala | 30 | $297/mês | $8.910/mês | ~$7.800/mês | ~87% |
+
+Esses números presumem que você não cobra separadamente por serviços — apenas receita de software. Na prática, a maioria das agências acrescenta uma taxa de configuração ($500–$2.000 única) e serviços opcionais de done-for-you.
+
+O ponto de equilíbrio com a plataforma em si (apenas o plano de $497) é literalmente 3 clientes a $197/mês. A maioria das agências com as quais trabalhei atinge isso nos primeiros 30 a 60 dias, se já tiver uma base de clientes para oferecer o serviço.
+
+Um aviso honesto: o maior risco não é a confiabilidade do GoHighLevel — é o churn. Se os clientes não usam a plataforma, eles cancelam. Seu trabalho é garantir que eles obtenham valor rapidamente (daí a estratégia de snapshot + automação de onboarding acima). Controlar o churn é um desafio operacional maior do que a configuração técnica.
+
+## Modo SaaS vs. Planos Padrão de Agência: Qual Você Precisa?
+
+| Recurso | Starter ($97) | Unlimited ($297) | Agency Pro/SaaS ($497) |
+|---|---|---|---|
+| Sub-contas | 1 | Ilimitadas | Ilimitadas |
+| App white-label | ❌ | ❌ | ✅ |
+| Cobrança de clientes via Stripe | ❌ | ❌ | ✅ |
+| Domínio de login personalizado | ❌ | ❌ | ✅ |
+| Recursos de IA | Limitado | Padrão | Completo |
+| Automação de snapshot SaaS | ❌ | ❌ | ✅ |
+| App Zap/desktop white-label | Add-on | Add-on | Incluído |
+
+Se você está gerenciando as contas dos clientes em nome deles (modelo de agência done-for-you), o plano Unlimited a $297/mês provavelmente é suficiente. Se você quer revender software e criar receita recorrente passiva, precisa do plano Agency Pro. Não há como contornar isso — a infraestrutura de cobrança e o portal white-label simplesmente não existem nos planos inferiores.
+
+Para uma visão mais ampla de como o GoHighLevel se destaca como plataforma para agências, confira meu artigo sobre o [melhor CRM all-in-one para agências em 2026](/pt/blog/best-all-in-one-crm-for-agencies-2026).
+
+## Quem Deve (e Quem Não Deve) Usar o Modo SaaS
+
+**O modo SaaS é uma ótima opção se você:**
+- Já tem 5 ou mais clientes ou um público aquecido para quem pode fazer uma oferta
+- Atua em um nicho específico (ar-condicionado, imóveis, odontologia etc.) onde pode construir um snapshot sólido e vendê-lo repetidamente
+- Quer deixar de trocar tempo por dinheiro e passar a gerar receita recorrente
+- Tem paciência para investir de 4 a 8 horas na configuração antes de ver retorno
+
+**O modo SaaS NÃO é uma boa opção se você:**
+- É completamente iniciante, sem clientes e sem audiência — você pagará $497/mês enquanto tenta descobrir como vender
+- Atende clientes enterprise que já têm departamentos de TI e não aceitarão uma ferramenta SaaS revendida
+- Quer uma ferramenta simples para gerenciar seu próprio marketing — o plano Starter ou Unlimited é mais adequado
+
+Minha recomendação honesta: comece no Unlimited ($297/mês), tenha de 3 a 5 clientes usando os recursos do GoHighLevel e, então, faça upgrade para o Agency Pro quando estiver confiante na proposta de valor e tiver prospects aquecidos para apresentar o software.
+
+## Perguntas Frequentes
+
+**Q:** Qual plano eu preciso para o modo SaaS do GoHighLevel?
+**A:** Você precisa do plano Agency Pro, que custa $497/mês (ou aproximadamente $397/mês no plano anual). O modo SaaS não está disponível nos planos Starter ($97) ou Unlimited ($297).
+
+**Q:** Como o GoHighLevel gerencia a cobrança de clientes no modo SaaS?
+**A:** O GoHighLevel se integra diretamente à sua conta Stripe. Você configura os planos de preços no SaaS Configurator e, quando os clientes se cadastram pelo seu portal com sua marca, o Stripe os cobra automaticamente de forma recorrente. Você recebe os fundos na sua conta Stripe, não na do GoHighLevel.
+
+**Q:** Os clientes podem perceber que o software é, na verdade, o GoHighLevel?
+**A:** Não, se você configurar corretamente. O modo SaaS oferece uma URL de login personalizada (seu próprio domínio), seu próprio logotipo, cores de marca e uma interface totalmente white-label. A identidade visual do GoHighLevel é removida. Dito isso, clientes com conhecimento técnico às vezes conseguem identificar a plataforma subjacente por inspeção do navegador, mas para a grande maioria dos clientes de pequenas e médias empresas, é completamente invisível.
+
+**Q:** Quanto tempo leva para configurar o modo SaaS?
+**A:** Na minha experiência, a configuração técnica básica — conexão com o Stripe, Twilio, Mailgun, domínio personalizado e planos de preços iniciais — leva de 4 a 8 horas. Criar um snapshot de onboarding de alta qualidade para o seu nicho pode levar mais 10 a 20 horas, mas precisa ser feito apenas uma vez. Depois disso, o onboarding de clientes é amplamente automatizado.
+
+**Q:** Qual é um preço realista para cobrar de clientes pelo GoHighLevel com white-label?
+**A:** A maioria das agências que já vi cobra entre $97/mês e $497/mês, dependendo do conjunto de recursos e do nicho. Um ponto de partida comum é $197–$297/mês para um plano principal que inclui CRM, pipelines, SMS bidirecional, e-mail marketing e automação básica. Planos de nível superior ($397–$497/mês) geralmente incluem automações mais avançadas, recursos de IA ou franquias de uso.
+
+**Q:** Preciso de uma conta Twilio separada para o modo SaaS?
+**A:** Sim. Você conecta sua própria conta Twilio à sua agência no GoHighLevel, e cada sub-conta de cliente usa suas credenciais Twilio (ou você pode permitir que os clientes conectem as deles). Você paga as tarifas do Twilio diretamente e pode aplicar uma margem ou incluí-las no preço da assinatura.
+
+**Q:** O modo SaaS do GoHighLevel vale a pena em comparação com criar meu próprio software?
+**A:** Com certeza, para a maioria das agências. Construir uma plataforma comparável do zero (CRM, construtor de funis, automação de e-mail/SMS, pipelines, gestão de reputação, agendamento, IA) custaria centenas de milhares de dólares e anos de desenvolvimento. A $497/mês, você está alugando uma plataforma pronta para produção com uma equipe de desenvolvimento ativa lançando novos recursos toda semana.
+
+## Conclusão
+
+O modo SaaS do GoHighLevel é um dos caminhos mais acessíveis para receita recorrente no estilo software disponíveis para agências de marketing hoje. A matemática funciona — depois que você passa do ponto de equilíbrio (geralmente 3 a 5 clientes), cada cliente adicional representa quase margem pura. A configuração exige trabalho real, mas é um trabalho feito uma única vez. O esforço operacional contínuo, especialmente com um snapshot de onboarding sólido, é mínimo.
+
+Se você é uma agência estabelecida com uma base de clientes existente, recomendo avaliar seriamente o upgrade para o Agency Pro e testar o modelo SaaS com alguns clientes antes de fazer uma transição completa. Comece o teste gratuito de 14 dias, explore o SaaS Configurator e faça as contas considerando sua carteira de clientes real. A matemática vai falar por si — e você saberá nas primeiras duas semanas.
